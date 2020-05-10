@@ -87,31 +87,24 @@ public class MainActivity extends AppCompatActivity {
 
         sair.setOnClickListener(v -> firebaseAuth.signOut());
         historico.setOnClickListener(v -> irParaHistorico());
-        pontoEntrada.setOnClickListener(v -> builderConfirmacao(2, "Entrada"));
-        pontoSaida.setOnClickListener(v -> builderConfirmacao(2, "Saida"));
+        pontoEntrada.setOnClickListener(v -> builderConfirmacao( "Entrada"));
+        pontoSaida.setOnClickListener(v -> builderConfirmacao( "Saida"));
     }
 
-    private void builderConfirmacao(int id, String tipo) {
+    private void builderConfirmacao( String tipo) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        if (id == 1) {
-            builder.setTitle("Bem vindo ao Ponto Certo");
-            builder.setMessage(getString(R.string.TextoBASE));
-            builder.setNeutralButton("Okay, entendi.",
-                    (arg0, arg1) -> {
-                    });
-            alerta = builder.create();
-            alerta.show();
-        } else {
+
             builder.setTitle(getString(R.string.perguntaPonto, tipo));
             builder.setPositiveButton("Sim", ((dialog, which) -> marcarPonto(tipo, tipo.equals("Entrada"))));
             builder.setNegativeButton("Não", ((dialog, which) -> closeOptionsMenu()));
             alerta = builder.create();
             alerta.show();
         }
-    }
+
 
     private void marcarPonto(String tipo, Boolean ponto) {
-        viewModel.marcarPonto(tipo, ponto);
+
+        //viewModel.marcarPonto(tipo, ponto);
     }
 
     private void generateToastMessage(String string) {
@@ -141,6 +134,13 @@ public class MainActivity extends AppCompatActivity {
 
         RegisterDay colaborador = new RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaborador);
+
+        RegisterDay colaboradora = new RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        list.add(colaboradora);
+    }
+
+    public void addUser(){
+
     }
 }
 

@@ -32,15 +32,17 @@ class DayDataAdapter(var register: ArrayList<RegisterDay>) : RecyclerView.Adapte
         notifyDataSetChanged()
     }
 
+
+
     class DataViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-          var data : TextView? = null
-         var registro : TextView? = null
+        var dataView: TextView? = null
+        var registerView: TextView? = null
 
         fun bind(itemView: RegisterDay) {
 
-            data?.text =  itemView.data
-            registro?.text = itemView.registro
+            dataView?.text = itemView.data
+            registerView?.text = itemView.registro
         }
 
     }
