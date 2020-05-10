@@ -4,16 +4,23 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+
 import br.com.devdiegopirutti.pontocertoapp.R;
 import br.com.devdiegopirutti.pontocertoapp.ViewModel.MainActivityViewModel;
+import br.com.devdiegopirutti.pontocertoapp.ui.adapter.DayDataAdapter;
+import br.com.devdiegopirutti.pontocertoapp.ui.adapter.RegisterDay;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
     private AlertDialog alerta;
     private RecyclerView recyclerView;
+    private ArrayList<RegisterDay> list = new ArrayList<>();
     private MainActivityViewModel viewModel = new MainActivityViewModel();
 
     @Override
@@ -34,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         initializeButtons();
         observerResult();
         pegarInformações();
+        listarColaboradores();
 
     }
 
@@ -46,13 +55,20 @@ public class MainActivity extends AppCompatActivity {
     public void initializeViews() {
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
+        DayDataAdapter adapter = new DayDataAdapter(list);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         userEmpresa = findViewById(R.id.empresa);
         userName = findViewById(R.id.txt_nome);
         historico = findViewById(R.id.hist_btn);
         sair = findViewById(R.id.sair_btn);
         pontoSaida = findViewById(R.id.btn_saida);
         pontoEntrada = findViewById(R.id.btn_entrada);
-        recyclerView = findViewById(R.id.recyclerViewDataDay);
+        recyclerView = findViewById(R.id.recyclerViewMain);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+        recyclerView.setAdapter(adapter);
 
         viewModel.info
                 .observe(this,
@@ -119,7 +135,12 @@ public class MainActivity extends AppCompatActivity {
 
     void pegarInformações() {
         viewModel.pegarInformaçõesDoUsuario();
+    }
 
+    public void listarColaboradores() {
+
+        RegisterDay colaborador = new RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        list.add(colaborador);
     }
 }
 

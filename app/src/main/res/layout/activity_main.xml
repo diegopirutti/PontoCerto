@@ -109,7 +109,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_boasvindas" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewDataDay"
+        android:id="@+id/recyclerViewMain"
         android:layout_width="420dp"
         android:layout_height="402dp"
         android:layout_marginTop="28dp"
