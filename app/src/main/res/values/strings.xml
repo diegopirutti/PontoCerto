@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ponto Certo</string>
+
+    <string name="TextoBASE">Piuahhauahiahiuahahuiahhhahahahaiuaiuhaiuha
+    ahuiahiuahiuahiahaiuhaiuhaihaiuahiuahiahaauhaiuhauaiuahuiahauhauh
+    iahiuahiuahauihauihauihauihauahuiahuahaiuhaihauahuiahauhauihauihaia
+    iuhauihaiuahiuahiuahauihauihauiahuiahuiahauihauhaiuhauahuahauhauahu
+    iuhaiuhaiuahuiahuiahuiahaiuhauihauihaiuhauiahauihauihaiuhauiahiuahau
+    iuahiuahiuahiuahu</string>
+    <string name="pontoEntrada">Você marcou ponto de entrada.</string>
+    <string name="pontoSaida">Você marcou ponto de saída.</string>
+    <string name="perguntaPonto">Você deseja confirmar o ponto de %1$s?</string>
+</resources>

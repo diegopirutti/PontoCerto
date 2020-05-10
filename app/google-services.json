@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "797604772037",
+    "firebase_url": "https://chat-diegopirutti.firebaseio.com",
+    "project_id": "chat-diegopirutti",
+    "storage_bucket": "chat-diegopirutti.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797604772037:android:3021175be639f034d818ac",
+        "android_client_info": {
+          "package_name": "br.com.devdiegopirutti.control"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797604772037-dj9k71tgsstfupm026fvp69hs2t8pf7h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.devdiegopirutti.control",
+            "certificate_hash": "8b83b511f0cc440084b0da21c45b309e888f8573"
+          }
+        },
+        {
+          "client_id": "797604772037-4a1sgacu3knr1spcieeqijs82cj5soar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYqni2E0LmOde0W95akRYLAlUdTMhV55I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797604772037-4a1sgacu3knr1spcieeqijs82cj5soar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797604772037:android:1e1df9ba178ee73bd818ac",
+        "android_client_info": {
+          "package_name": "br.com.devdiegopirutti.pontocertoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797604772037-uhbp635jg9pgg4lsnt9l3l3trt0vgf4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.devdiegopirutti.pontocertoapp",
+            "certificate_hash": "8b83b511f0cc440084b0da21c45b309e888f8573"
+          }
+        },
+        {
+          "client_id": "797604772037-4a1sgacu3knr1spcieeqijs82cj5soar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYqni2E0LmOde0W95akRYLAlUdTMhV55I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797604772037-4a1sgacu3knr1spcieeqijs82cj5soar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797604772037:android:ff9ea9e28290b537",
+        "android_client_info": {
+          "package_name": "org.aprendizado.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797604772037-ls1s4be3soujf05abuisdojg3cue0bmp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.aprendizado.chat",
+            "certificate_hash": "8b83b511f0cc440084b0da21c45b309e888f8573"
+          }
+        },
+        {
+          "client_id": "797604772037-4a1sgacu3knr1spcieeqijs82cj5soar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYqni2E0LmOde0W95akRYLAlUdTMhV55I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797604772037-4a1sgacu3knr1spcieeqijs82cj5soar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
