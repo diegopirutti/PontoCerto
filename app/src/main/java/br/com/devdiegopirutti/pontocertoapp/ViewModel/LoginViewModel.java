@@ -8,6 +8,8 @@ import br.com.devdiegopirutti.pontocertoapp.model.User;
 
 public class LoginViewModel {
 
+
+
     public MutableLiveData<Events> event = new MutableLiveData();
     private LoginUseCase useCase = new LoginUseCase();
 
