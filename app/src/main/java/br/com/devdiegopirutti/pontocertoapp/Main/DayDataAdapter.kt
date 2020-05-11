@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.ui.adapter
+package br.com.devdiegopirutti.pontocertoapp.Main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.devdiegopirutti.pontocertoapp.R
-import br.com.devdiegopirutti.pontocertoapp.model.DataClasses
+import br.com.devdiegopirutti.pontocertoapp.Model.DataClasses
 import java.util.*
 
 class DayDataAdapter(var register: ArrayList<DataClasses.RegisterDay>) : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {

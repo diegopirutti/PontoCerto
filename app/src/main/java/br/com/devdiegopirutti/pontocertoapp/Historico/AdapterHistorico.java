@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.ui.adapter;
+package br.com.devdiegopirutti.pontocertoapp.Historico;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.devdiegopirutti.pontocertoapp.R;
-import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
+import br.com.devdiegopirutti.pontocertoapp.Model.DataClasses;
 
 public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
 

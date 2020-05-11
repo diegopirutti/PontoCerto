@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.model
+package br.com.devdiegopirutti.pontocertoapp.Model
 
 import androidx.room.Entity
 

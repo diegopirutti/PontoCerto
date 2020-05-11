@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.ui.activity;
+package br.com.devdiegopirutti.pontocertoapp.Main;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -18,9 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 
 import br.com.devdiegopirutti.pontocertoapp.R;
-import br.com.devdiegopirutti.pontocertoapp.ViewModel.MainActivityViewModel;
-import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
-import br.com.devdiegopirutti.pontocertoapp.ui.adapter.DayDataAdapter;
+import br.com.devdiegopirutti.pontocertoapp.Model.DataClasses;
+import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 
 
 public class MainActivity extends AppCompatActivity {

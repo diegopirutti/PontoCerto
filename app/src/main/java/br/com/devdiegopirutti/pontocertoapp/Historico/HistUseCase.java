@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.UseCase;
+package br.com.devdiegopirutti.pontocertoapp.Historico;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;

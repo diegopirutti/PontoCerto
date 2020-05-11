@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.ViewModel;
+package br.com.devdiegopirutti.pontocertoapp.Historico;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -11,8 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.devdiegopirutti.pontocertoapp.UseCase.HistUseCase;
-import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
+import br.com.devdiegopirutti.pontocertoapp.Model.DataClasses;
 
 public class HistViewModel extends ViewModel {
 

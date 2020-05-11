@@ -1,9 +1,9 @@
-package br.com.devdiegopirutti.pontocertoapp.ViewModel;
+package br.com.devdiegopirutti.pontocertoapp.Login;
 
 import androidx.lifecycle.MutableLiveData;
-import br.com.devdiegopirutti.pontocertoapp.UseCase.LoginUseCase;
-import br.com.devdiegopirutti.pontocertoapp.model.Events;
-import br.com.devdiegopirutti.pontocertoapp.model.User;
+
+import br.com.devdiegopirutti.pontocertoapp.Model.Events;
+import br.com.devdiegopirutti.pontocertoapp.Model.User;
 
 public class LoginViewModel {
 

@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.ui.activity;
+package br.com.devdiegopirutti.pontocertoapp.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.devdiegopirutti.pontocertoapp.R;
-import br.com.devdiegopirutti.pontocertoapp.ViewModel.LoginViewModel;
-import br.com.devdiegopirutti.pontocertoapp.model.User;
+import br.com.devdiegopirutti.pontocertoapp.Model.User;
+import br.com.devdiegopirutti.pontocertoapp.Main.MainActivity;
 
 
 public class LoginActivity extends AppCompatActivity {

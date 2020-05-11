@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.ui.activity;
+package br.com.devdiegopirutti.pontocertoapp.Historico;
 
 import android.os.Bundle;
 
@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import br.com.devdiegopirutti.pontocertoapp.R;
-import br.com.devdiegopirutti.pontocertoapp.ViewModel.HistViewModel;
-import br.com.devdiegopirutti.pontocertoapp.ui.adapter.AdapterHistorico;
 
 
 public class HistoricoActivity extends AppCompatActivity {

@@ -1,11 +1,10 @@
-package br.com.devdiegopirutti.pontocertoapp.UseCase;
+package br.com.devdiegopirutti.pontocertoapp.Login;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
-import br.com.devdiegopirutti.pontocertoapp.model.User;
+import br.com.devdiegopirutti.pontocertoapp.Model.User;
 
 public class LoginUseCase {
 

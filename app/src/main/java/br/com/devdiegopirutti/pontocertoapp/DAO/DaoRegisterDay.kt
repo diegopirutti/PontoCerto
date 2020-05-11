@@ -1,7 +1,7 @@
-package br.com.devdiegopirutti.pontocertoapp.app
+package br.com.devdiegopirutti.pontocertoapp.DAO
 
 import androidx.room.*
-import br.com.devdiegopirutti.pontocertoapp.model.DataClasses
+import br.com.devdiegopirutti.pontocertoapp.Model.DataClasses
 
 @Dao
 interface DaoRegisterDay {
