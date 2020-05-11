@@ -3,6 +3,7 @@ package br.com.devdiegopirutti.pontocertoapp.Main;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +20,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.Register;
@@ -27,7 +30,7 @@ import br.com.devdiegopirutti.pontocertoapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView userName, userEmpresa;
+    private TextView userName, userEmpresa, alertText;
     private FirebaseAuth firebaseAuth;
     private Button historico, ponto;
     private Intent intent;
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         historico = findViewById(R.id.hist_btn);
         ponto = findViewById(R.id.btn_registro);
         recyclerView = findViewById(R.id.recyclerViewMain);
+        alertText = findViewById(R.id.AlertText);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
@@ -126,11 +130,11 @@ public class MainActivity extends AppCompatActivity {
             switch (events) {
                 case GRAVARPONTOENTRADA:
                     generateToastMessage(getString(R.string.pontoEntrada));
-                    registerNow("Entrada");
+                    verifyAllRegisters("Entrada");
                     break;
                 case GRAVARPONTOSAÍDA:
                     generateToastMessage(getString(R.string.pontoSaida));
-                    registerNow("Saída");
+                    verifyAllRegisters("Saída");
                     break;
                 default:
             }
@@ -156,12 +160,29 @@ public class MainActivity extends AppCompatActivity {
         return dateFormat.format(date);
     }
 
-    public void registerNow(String type) {
+    public void verifyAllRegisters(String type) {
+
         Register pontoGravado = new Register(type, getDateTime());
-        adapter.updateList(pontoGravado);
+        if (list.size() > 4) {
+            list.clear();
+            recyclerView.setVisibility(View.INVISIBLE);
+            alertText.setVisibility(View.VISIBLE);
+            //  countTime();
+        } else adapter.updateList(pontoGravado);
+    }
+
+    private void countTime() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                alertText.setVisibility(View.VISIBLE);
+
+            }
+        }, 4000, 100000);
 
     }
 }
+
 
 
 
