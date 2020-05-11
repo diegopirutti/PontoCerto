@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         userEmpresa = findViewById(R.id.empresa);
         userName = findViewById(R.id.txt_nome);
         historico = findViewById(R.id.hist_btn);
-        sair = findViewById(R.id.sair_btn);
-        pontoSaida = findViewById(R.id.btn_saida);
+        //sair = findViewById(R.id.sair_btn);
+        //pontoSaida = findViewById(R.id.btn_saida);
         pontoEntrada = findViewById(R.id.btn_entrada);
         recyclerView = findViewById(R.id.recyclerViewMain);
 
@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(this, HistoricoActivity.class);
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        sair.setOnClickListener(v -> firebaseAuth.signOut());
+        //sair.setOnClickListener(v -> firebaseAuth.signOut());
         historico.setOnClickListener(v -> irParaHistorico());
         pontoEntrada.setOnClickListener(v -> builderConfirmacao( "Entrada"));
-        pontoSaida.setOnClickListener(v -> builderConfirmacao( "Saida"));
+        //pontoSaida.setOnClickListener(v -> builderConfirmacao( "Saida"));
     }
 
     private void builderConfirmacao( String tipo) {

@@ -4,75 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/degrade_fundo"
     tools:context=".ui.activity.MainActivity">
 
     <Button
         android:id="@+id/btn_entrada"
-        android:layout_width="0dp"
+        android:layout_width="206dp"
         android:layout_height="50dp"
         android:background="@drawable/botaocust"
-        android:text="entrada"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/hist_btn"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/hist_btn" />
-
-    <Button
-        android:id="@+id/btn_saida"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="@drawable/botaocust"
-        android:text="saída"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/sair_btn"
-        app:layout_constraintEnd_toEndOf="@+id/sair_btn"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
-
-    <Button
-        android:id="@+id/sair_btn"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/botaocust"
-        android:text="SAIR"
+        android:text="registrar"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/hist_btn"
-        android:layout_width="0dp"
+        android:layout_width="206dp"
         android:layout_height="50dp"
         android:background="@drawable/botaocust"
         android:text="HISTÓRICO"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/logo_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:srcCompat="@drawable/potnocertologo_reduzido" />
+        app:layout_constraintStart_toEndOf="@+id/btn_entrada" />
 
     <TextView
         android:id="@+id/textView_boasvindas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:text="Bem vindo/a, "
         android:textColor="#ffffff"
+        android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -81,21 +50,12 @@
         android:layout_height="wrap_content"
         android:text="nome"
         android:textColor="#ffffff"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView_boasvindas"
         app:layout_constraintStart_toEndOf="@+id/textView_boasvindas"
         app:layout_constraintTop_toTopOf="@+id/textView_boasvindas"
         app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="410dp"
-        android:layout_height="27dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="@+id/logo_img"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/logo_img"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/empresa"
@@ -103,6 +63,7 @@
         android:layout_height="wrap_content"
         android:text="empresa"
         android:textColor="#ffffff"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txt_nome"
         app:layout_constraintHorizontal_bias="0.0"
@@ -112,19 +73,48 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"
         android:layout_width="422dp"
-        android:layout_height="385dp"
+        android:layout_height="300dp"
+        android:background="@android:color/background_light"
         app:layout_constraintBottom_toTopOf="@+id/btn_entrada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_img" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="180dp"
+        android:layout_height="170dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/handwhite" />
+
+    <TextView
+        android:id="@+id/SloganPontoCerto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:text="Ponto Certo"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_boasvindas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.317" />
 
-        app:layout_constraintGuide_percent="0.5"
-        app:layout_constraintWidth_percent="0.50" />
+    <TextView
+        android:id="@+id/DescricaoPontoCerto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Controle de Ponto Online"
+        android:textColor="#C5C5C5"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/SloganPontoCerto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
