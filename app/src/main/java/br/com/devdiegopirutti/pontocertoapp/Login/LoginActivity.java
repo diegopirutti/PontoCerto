@@ -8,9 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.com.devdiegopirutti.pontocertoapp.R;
-import br.com.devdiegopirutti.pontocertoapp.Model.User;
 import br.com.devdiegopirutti.pontocertoapp.Main.MainActivity;
+import br.com.devdiegopirutti.pontocertoapp.Model.User;
+import br.com.devdiegopirutti.pontocertoapp.R;
 
 
 public class LoginActivity extends AppCompatActivity {

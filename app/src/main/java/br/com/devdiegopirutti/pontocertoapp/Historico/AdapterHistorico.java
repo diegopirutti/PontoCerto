@@ -4,8 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
         return arrayList.size();
     }
 
-    public void adicionarItens(List<PontoModel> list){
+    public void adicionarItens(List<PontoModel> list) {
         list.addAll(list);
         notifyDataSetChanged();
     }
@@ -73,8 +75,8 @@ class ViewHolder extends RecyclerView.ViewHolder {
 //            horaEData.entrada = entradatxt.setText(dataH);
 //        } else {
 //            horaEData.entrada = saidatxt.setText(dataH);
-        }
     }
+}
 //}
 
 

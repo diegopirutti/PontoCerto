@@ -11,7 +11,7 @@ public class LoginUseCase {
     private FirebaseAuth fbAuth = FirebaseAuth.getInstance();
 
     public Task<AuthResult> verifyLoginType(User user) {
-       return fbAuth.signInWithEmailAndPassword(user.getEmail(), user.getPassword());
+        return fbAuth.signInWithEmailAndPassword(user.getEmail(), user.getPassword());
     }
 
 

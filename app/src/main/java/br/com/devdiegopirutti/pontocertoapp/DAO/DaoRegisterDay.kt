@@ -1,16 +1,17 @@
 package br.com.devdiegopirutti.pontocertoapp.DAO
 
 import androidx.room.*
-import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay
+import br.com.devdiegopirutti.pontocertoapp.Model.Register
 
 @Dao
 interface DaoRegisterDay {
 
-        @Insert(onConflict = OnConflictStrategy.REPLACE) fun insertRegister(vararg register: RegisterDay)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRegister(vararg register: Register)
 
-        @Update
-        fun updateUser(registerDay: RegisterDay)
+    @Update
+    fun updateUser(register: Register)
 
-        @Delete
-        fun deleteUser(registerDay: RegisterDay)
-    }
+    @Delete
+    fun deleteUser(register: Register)
+}

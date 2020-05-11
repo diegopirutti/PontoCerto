@@ -8,7 +8,7 @@
     tools:context=".Main.MainActivity">
 
     <Button
-        android:id="@+id/btn_entrada"
+        android:id="@+id/btn_registro"
         android:layout_width="206dp"
         android:layout_height="50dp"
         android:background="@drawable/botaocust"
@@ -26,7 +26,7 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_entrada" />
+        app:layout_constraintStart_toEndOf="@+id/btn_registro" />
 
     <TextView
         android:id="@+id/textView_boasvindas"
@@ -75,7 +75,7 @@
         android:layout_width="422dp"
         android:layout_height="300dp"
         android:background="@android:color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/btn_entrada"
+        app:layout_constraintBottom_toTopOf="@+id/btn_registro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
