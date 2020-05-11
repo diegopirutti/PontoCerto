@@ -17,8 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
+import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay;
 import br.com.devdiegopirutti.pontocertoapp.R;
-import br.com.devdiegopirutti.pontocertoapp.Model.DataClasses;
+
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 
 
@@ -26,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView userName, userEmpresa;
     private FirebaseAuth firebaseAuth;
-    private Button sair, historico, pontoEntrada, pontoSaida;
+    private Button historico, pontoEntrada, pontoSaida;
     private Intent intent;
     private AlertDialog alerta;
     private RecyclerView recyclerView;
-    private ArrayList<DataClasses.RegisterDay> list = new ArrayList<DataClasses.RegisterDay>();
+    private ArrayList<RegisterDay> list = new ArrayList<>();
     private MainActivityViewModel viewModel = new MainActivityViewModel();
 
     @Override
@@ -130,10 +131,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void listarColaboradores() {
 
-        DataClasses.RegisterDay colaborador = new DataClasses.RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        RegisterDay colaborador = new RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaborador);
 
-        DataClasses.RegisterDay colaboradora = new DataClasses.RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        RegisterDay colaboradora = new RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaboradora);
     }
 
