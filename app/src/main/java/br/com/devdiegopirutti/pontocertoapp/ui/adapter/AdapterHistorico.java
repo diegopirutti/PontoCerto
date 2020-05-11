@@ -13,12 +13,11 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.devdiegopirutti.pontocertoapp.R;
-import br.com.devdiegopirutti.pontocertoapp.model.HoraEData;
-import br.com.devdiegopirutti.pontocertoapp.model.PontoModel;
+import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
 
 public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
 
-    public ArrayList<PontoModel> arrayList = new ArrayList();
+    public ArrayList<DataClasses.PontoModel> arrayList = new ArrayList();
 
     @NonNull
     @Override
@@ -39,7 +38,7 @@ public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
         return arrayList.size();
     }
 
-    public void adicionarItens(List<PontoModel> list){
+    public void adicionarItens(List<DataClasses.PontoModel> list){
         list.addAll(list);
         notifyDataSetChanged();
     }
@@ -56,7 +55,7 @@ class ViewHolder extends RecyclerView.ViewHolder {
         saidatxt = (itemView).findViewById(R.id.txtSaidaValorRetornado);
     }
 
-    void bind(HoraEData horaEData) {
+    void bind(DataClasses.HoraEData horaEData) {
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
         Date date = new Date();

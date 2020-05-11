@@ -1,13 +1,11 @@
 package br.com.devdiegopirutti.pontocertoapp.ViewModel;
 
 import androidx.lifecycle.MutableLiveData;
-
 import br.com.devdiegopirutti.pontocertoapp.UseCase.LoginUseCase;
 import br.com.devdiegopirutti.pontocertoapp.model.Events;
 import br.com.devdiegopirutti.pontocertoapp.model.User;
 
 public class LoginViewModel {
-
 
 
     public MutableLiveData<Events> event = new MutableLiveData();

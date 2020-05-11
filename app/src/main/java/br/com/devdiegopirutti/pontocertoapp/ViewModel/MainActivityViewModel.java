@@ -7,13 +7,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import br.com.devdiegopirutti.pontocertoapp.UseCase.MainActivityUseCase;
+import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
 import br.com.devdiegopirutti.pontocertoapp.model.Events;
-import br.com.devdiegopirutti.pontocertoapp.model.InfoConta;
 
 public class MainActivityViewModel {
 
     public MutableLiveData<Events> events = new MutableLiveData();
-    public MutableLiveData<InfoConta> info = new MutableLiveData();
+    public MutableLiveData<DataClasses.InfoConta> info = new MutableLiveData();
     private MainActivityUseCase usecase = new MainActivityUseCase();
 
     public void marcarPonto(String tipo, boolean ponto) {
@@ -32,7 +32,7 @@ public class MainActivityViewModel {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        info.postValue(new InfoConta(
+                        info.postValue(new DataClasses.InfoConta(
                                 dataSnapshot.child("name").getValue(String.class),
                                 dataSnapshot.child("empresa").getValue(String.class)));
                     }

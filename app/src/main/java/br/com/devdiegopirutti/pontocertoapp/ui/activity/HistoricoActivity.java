@@ -34,7 +34,7 @@ public class HistoricoActivity extends AppCompatActivity {
 
     public void receiveModelList() {
         viewModel.pontoLiveData.observe(this, pontoModel -> {
-            adapterHistorico.adicionarItens(pontoModel);
+            //adapterHistorico.adicionarItens(pontoModel);
         });
     }
 }

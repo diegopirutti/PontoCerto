@@ -19,8 +19,9 @@ import java.util.ArrayList;
 
 import br.com.devdiegopirutti.pontocertoapp.R;
 import br.com.devdiegopirutti.pontocertoapp.ViewModel.MainActivityViewModel;
+import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
 import br.com.devdiegopirutti.pontocertoapp.ui.adapter.DayDataAdapter;
-import br.com.devdiegopirutti.pontocertoapp.ui.adapter.RegisterDay;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
     private AlertDialog alerta;
     private RecyclerView recyclerView;
-    private ArrayList<RegisterDay> list = new ArrayList<>();
+    private ArrayList<DataClasses.RegisterDay> list = new ArrayList<DataClasses.RegisterDay>();
     private MainActivityViewModel viewModel = new MainActivityViewModel();
 
     @Override
@@ -60,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
         userEmpresa = findViewById(R.id.empresa);
         userName = findViewById(R.id.txt_nome);
         historico = findViewById(R.id.hist_btn);
-        //sair = findViewById(R.id.sair_btn);
-        //pontoSaida = findViewById(R.id.btn_saida);
         pontoEntrada = findViewById(R.id.btn_entrada);
         recyclerView = findViewById(R.id.recyclerViewMain);
 
@@ -132,16 +131,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void listarColaboradores() {
 
-        RegisterDay colaborador = new RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        DataClasses.RegisterDay colaborador = new DataClasses.RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaborador);
 
-        RegisterDay colaboradora = new RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        DataClasses.RegisterDay colaboradora = new DataClasses.RegisterDay("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaboradora);
     }
 
-    public void addUser(){
-
-    }
 }
 
 

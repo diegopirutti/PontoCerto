@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.devdiegopirutti.pontocertoapp.UseCase.HistUseCase;
-import br.com.devdiegopirutti.pontocertoapp.model.PontoModel;
+import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
 
 public class HistViewModel extends ViewModel {
 
-    public MutableLiveData<List<PontoModel>> pontoLiveData = new MutableLiveData();
+    public MutableLiveData<List<DataClasses.PontoModel>> pontoLiveData = new MutableLiveData();
     public HistUseCase usecase = new HistUseCase();
 
     public void getData() {
@@ -24,10 +24,10 @@ public class HistViewModel extends ViewModel {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ArrayList<PontoModel> pontosBatidos = new ArrayList();
+                        ArrayList<DataClasses.PontoModel> pontosBatidos = new ArrayList();
 
                         for (DataSnapshot listData : dataSnapshot.getChildren()) {
-                            pontosBatidos.add(listData.getValue(PontoModel.class));
+                            pontosBatidos.add(listData.getValue(DataClasses.PontoModel.class));
                         }
 
                         pontoLiveData.postValue(pontosBatidos);

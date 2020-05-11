@@ -5,7 +5,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.Date;
-import br.com.devdiegopirutti.pontocertoapp.model.HoraEData;
+
+import br.com.devdiegopirutti.pontocertoapp.model.DataClasses;
 
 public class MainActivityUseCase {
 
@@ -15,7 +16,7 @@ public class MainActivityUseCase {
         return firebaseDatabase.getReference()
                 .child("/users/")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/ponto/").push()
-                .setValue(new HoraEData(new Date().getTime(), b));
+                .setValue(new DataClasses.HoraEData(new Date().getTime(), b));
     }
 
     public DatabaseReference pegarInformações() {

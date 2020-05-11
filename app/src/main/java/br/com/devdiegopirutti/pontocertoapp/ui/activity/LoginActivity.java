@@ -7,9 +7,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import br.com.devdiegopirutti.pontocertoapp.R;
 import br.com.devdiegopirutti.pontocertoapp.ViewModel.LoginViewModel;
 import br.com.devdiegopirutti.pontocertoapp.model.User;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     //Login Region
     private void doLogin() {
         User user = new User(emailTxt.getText().toString(), passwordTxt.getText().toString());
-        if (!user.email.isEmpty() && !user.password.isEmpty()) model.doLogin(user);
+        if (user.getEmail() != null && user.getPassword() != null) model.doLogin(user);
         else Toast.makeText(this, "ACC/PASS Inválidos", Toast.LENGTH_LONG).show();
     }
 
