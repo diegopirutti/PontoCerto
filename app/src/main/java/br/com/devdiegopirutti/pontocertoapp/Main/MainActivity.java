@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.stetho.Stetho;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DateFormat;
@@ -23,6 +24,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.Register;
 import br.com.devdiegopirutti.pontocertoapp.R;
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel = new MainActivityViewModel();
     DayDataAdapter adapter = new DayDataAdapter(list);
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
         pegarInformações();
         listarColaboradores();
 
+        initializeStetho();
+    }
+
+    private void initializeStetho() {
+
+        Stetho.InitializerBuilder initializerBuilder = Stetho.newInitializerBuilder(this);
+        initializerBuilder.enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this));
+        Stetho.Initializer initializer = initializerBuilder.build();
+        Stetho.initialize(initializer);
     }
 
 
@@ -61,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initializeViews() {
         if (getSupportActionBar() != null) getSupportActionBar().hide();
+
 
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -147,10 +161,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void listarColaboradores() {
 
-        Register colaborador = new Register("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        Register colaborador = new Register(0,"Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaborador);
 
-        Register colaboradora = new Register("Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        Register colaboradora = new Register(0,"Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaboradora);
     }
 
@@ -162,12 +176,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void verifyAllRegisters(String type) {
 
-        Register pontoGravado = new Register(type, getDateTime());
-        if (list.size() > 4) {
+        Register pontoGravado = new Register(0, type, getDateTime());
+        if (list.size() < 4) {
             list.clear();
             recyclerView.setVisibility(View.INVISIBLE);
             alertText.setVisibility(View.VISIBLE);
-            //  countTime();
+            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
         } else adapter.updateList(pontoGravado);
     }
 

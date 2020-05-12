@@ -1,10 +1,16 @@
 package br.com.devdiegopirutti.pontocertoapp.Model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+
 
 
 @Entity(tableName = "registerDay")
-data class Register(var registro: String, var data: String)
+data class Register(    @PrimaryKey(autoGenerate = true)
+                        val id:Int? = 0,
+                        var registro: String, var data: String)
 
 data class RegisterDay(var entrada: String, var saida: String,
                        var segEntrada: String, var segSaida: String)

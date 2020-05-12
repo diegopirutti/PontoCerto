@@ -7,7 +7,7 @@ import br.com.devdiegopirutti.pontocertoapp.Model.Register
 interface DaoRegisterDay {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertRegister(vararg register: Register)
+    fun insertRegister(register: Register)
 
     @Update
     fun updateUser(register: Register)
