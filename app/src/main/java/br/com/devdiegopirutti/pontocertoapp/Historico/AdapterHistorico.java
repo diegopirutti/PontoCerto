@@ -16,25 +16,37 @@ import java.util.List;
 
 import br.com.devdiegopirutti.pontocertoapp.Model.HoraEData;
 import br.com.devdiegopirutti.pontocertoapp.Model.PontoModel;
+import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay;
+import br.com.devdiegopirutti.pontocertoapp.Model.User;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
-public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
+public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.ViewHolder> {
 
-    public ArrayList<PontoModel> arrayList = new ArrayList();
+    private ArrayList<PontoModel> arrayList = new ArrayList();
+
+    public AdapterHistorico(ArrayList<PontoModel> lista) {
+        this.arrayList = lista;
+    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_historico,
-                parent, false);
+
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.model_historico, parent, false);
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        holder.bind(arrayList.get(position));
-//
+
+        PontoModel pontoModel = arrayList.get(position);
+
+
+        //holder.dataTxt.setText(pontoModel.getRegistro());
+
     }
 
     @Override
@@ -42,41 +54,41 @@ public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
         return arrayList.size();
     }
 
-    public void adicionarItens(List<PontoModel> list) {
-        list.addAll(list);
-        notifyDataSetChanged();
-    }
-}
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
-class ViewHolder extends RecyclerView.ViewHolder {
+        TextView dataTxt;
+        TextView entradaTxt;
+        TextView saidaTxt;
 
-    TextView datatxt, entradatxt, saidatxt;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
 
-    ViewHolder(@NonNull View itemView) {
-        super(itemView);
-        datatxt = (itemView).findViewById(R.id.data_txt);
-        entradatxt = (itemView).findViewById(R.id.txtEntValorRetornado);
-        saidatxt = (itemView).findViewById(R.id.txtSaidaValorRetornado);
-    }
+            dataTxt = itemView.findViewById(R.id.data_txt);
+            entradaTxt = itemView.findViewById(R.id.entrada_txt);
+            saidaTxt = itemView.findViewById(R.id.saida_txt);
 
-    void bind(HoraEData horaEData) {
+        }
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
-        Date date = new Date();
 
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        Date dateHour = new Date();
+//
+//    void bind(HoraEData horaEData) {
+//
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
+//        Date date = new Date();
+//
+//        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+//        Date dateHour = new Date();
+//
+//        String data = dateFormat.format(date);
+//        String dataH = hourFormat.format(dateHour);
 
-        String data = dateFormat.format(date);
-        String dataH = hourFormat.format(dateHour);
-
-        //datatxt.setText(data);
+//        datatxt.setText(data);
 //        if (entrada) {
 //            horaEData.entrada = entradatxt.setText(dataH);
 //        } else {
 //            horaEData.entrada = saidatxt.setText(dataH);
-    }
+//    }
 }
-//}
+}
 
 

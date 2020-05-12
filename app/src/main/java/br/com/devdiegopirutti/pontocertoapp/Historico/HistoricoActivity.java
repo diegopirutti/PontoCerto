@@ -11,7 +11,7 @@ import br.com.devdiegopirutti.pontocertoapp.R;
 
 public class HistoricoActivity extends AppCompatActivity {
 
-    AdapterHistorico adapterHistorico = new AdapterHistorico();
+    //AdapterHistorico adapterHistorico = new AdapterHistorico();
     HistViewModel viewModel = new HistViewModel();
 
     @Override
@@ -26,7 +26,7 @@ public class HistoricoActivity extends AppCompatActivity {
     private void iniatilizeRecycler() {
         RecyclerView recyclerView = findViewById(R.id.recycler_hist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapterHistorico);
+        //recyclerView.setAdapter(adapterHistorico);
     }
 
 
