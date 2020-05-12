@@ -33,7 +33,6 @@ class DayDataAdapter(var register: ArrayList<Register>) : RecyclerView.Adapter<D
         notifyDataSetChanged()
     }
 
-
     class DataViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         var dataView: TextView? = null
@@ -44,6 +43,5 @@ class DayDataAdapter(var register: ArrayList<Register>) : RecyclerView.Adapter<D
             dataView?.text = itemView.data
             registerView?.text = itemView.registro
         }
-
     }
 }

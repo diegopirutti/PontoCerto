@@ -10,17 +10,11 @@ import br.com.devdiegopirutti.pontocertoapp.Model.Register
 abstract class AppDataBase : RoomDatabase() {
     abstract fun registerDao(): DaoRegisterDay
 
-
 }
 
 open class MyApplication : Application() {
 
-     var database: AppDataBase? = null
-
-//    companion object {
-//        lateinit var database: AppDataBase
-//        //public var database: AppDataBase? = null
-//    }
+    var database: AppDataBase? = null
 
     override fun onCreate() {
         super.onCreate()

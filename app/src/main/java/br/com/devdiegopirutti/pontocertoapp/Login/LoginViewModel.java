@@ -7,10 +7,8 @@ import br.com.devdiegopirutti.pontocertoapp.Model.User;
 
 public class LoginViewModel {
 
-
     public MutableLiveData<Events> event = new MutableLiveData();
     private LoginUseCase useCase = new LoginUseCase();
-
 
     public void doLogin(User user) {
         useCase.verifyLoginType(user)
@@ -21,7 +19,6 @@ public class LoginViewModel {
                 })
                 .addOnFailureListener(e -> event.postValue(Events.FAILURE));
     }
-
 }
 
 

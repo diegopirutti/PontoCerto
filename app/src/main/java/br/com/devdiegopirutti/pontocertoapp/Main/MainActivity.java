@@ -54,12 +54,10 @@ public class MainActivity extends AppCompatActivity {
         observerResult();
         pegarInformações();
         listarColaboradores();
-
         initializeStetho();
     }
 
     private void initializeStetho() {
-
         Stetho.InitializerBuilder initializerBuilder = Stetho.newInitializerBuilder(this);
         initializerBuilder.enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this));
         Stetho.Initializer initializer = initializerBuilder.build();
@@ -97,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                             userName.setText(infoConta.getName());
                         }
                 );
-
     }
 
     public void initializeButtons() {

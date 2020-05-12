@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
         observerResult();
     }
 
-
     private void initializeViews() {
         if (getSupportActionBar() != null) getSupportActionBar().hide();
         button = findViewById(R.id.btn_logar);
@@ -36,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(view -> doLogin());
     }
 
-    //Login Region
     private void doLogin() {
         User user = new User(emailTxt.getText().toString(), passwordTxt.getText().toString());
         if (user.getEmail() != null && user.getPassword() != null) model.doLogin(user);
@@ -55,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 default:
                     loginFailureView();
-
             }
         });
     }
@@ -71,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     private void loginSuccessToAdmView() {
         // startActivity(new Intent(this, MainActivity.class));
     }
-    //end Login Region
+
 }
 
 
