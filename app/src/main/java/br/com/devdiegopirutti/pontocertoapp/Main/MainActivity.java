@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(colaborador);
 
         Register colaboradora = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
-        //list.add(colaboradora);
+
     }
 
     private String getDateTime() {
@@ -166,9 +166,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verifyAllRegisters(String type) {
-
         Register pontoGravado = new Register(0, type, getDateTime());
-        if (list.size() < 4) {
+        if (list.size() >= 4) {
             //recyclerView.setVisibility(View.INVISIBLE);
             //alertText.setVisibility(View.VISIBLE);
             ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
