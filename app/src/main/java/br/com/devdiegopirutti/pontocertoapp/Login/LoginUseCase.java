@@ -13,8 +13,6 @@ public class LoginUseCase {
     public Task<AuthResult> verifyLoginType(User user) {
         return fbAuth.signInWithEmailAndPassword(user.getEmail(), user.getPassword());
     }
-
-
 }
 
 

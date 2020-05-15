@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel = new MainActivityViewModel();
     DayDataAdapter adapter = new DayDataAdapter(list);
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,11 +67,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void initializeViews() {
         if (getSupportActionBar() != null) getSupportActionBar().hide();
-
-
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         userEmpresa = findViewById(R.id.empresa);
@@ -122,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         alerta.show();
     }
 
-
     private void marcarPonto(String tipo) {
         if (tipo.equals("Entrada")) {
             viewModel.marcarPonto(tipo, true);
@@ -158,11 +152,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void listarColaboradores() {
 
-        Register colaborador = new Register(0,"Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        Register colaborador = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         list.add(colaborador);
 
-        Register colaboradora = new Register(0,"Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
-        list.add(colaboradora);
+        Register colaboradora = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
+        //list.add(colaboradora);
     }
 
     private String getDateTime() {
@@ -175,10 +169,11 @@ public class MainActivity extends AppCompatActivity {
 
         Register pontoGravado = new Register(0, type, getDateTime());
         if (list.size() < 4) {
-            list.clear();
-            recyclerView.setVisibility(View.INVISIBLE);
-            alertText.setVisibility(View.VISIBLE);
+            //recyclerView.setVisibility(View.INVISIBLE);
+            //alertText.setVisibility(View.VISIBLE);
             ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
+            registerMoment();
+            list.clear();
         } else adapter.updateList(pontoGravado);
     }
 
@@ -190,6 +185,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }, 4000, 100000);
+
+    }
+
+    private void registerMoment() {
+
+
+//        RegisterDay pontoGravado = new RegisterDay();
+//        if (register.getEntrada() == null) {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        } else if (registerDay.getSaida() == null) {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        } else if (registerDay.getSegEntrada() == null) {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        } else {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        }
 
     }
 }

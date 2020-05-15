@@ -18,7 +18,8 @@ open class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        database = Room.databaseBuilder(this, AppDataBase::class.java, "my-db").allowMainThreadQueries().build()
+        database = Room.databaseBuilder(this, AppDataBase::class.java, "my-db")
+                .allowMainThreadQueries().build()
 
     }
 }
