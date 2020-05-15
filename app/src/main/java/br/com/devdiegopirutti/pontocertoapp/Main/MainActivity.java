@@ -27,7 +27,6 @@ import java.util.TimerTask;
 import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.Register;
-import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
     private AlertDialog alerta;
     private RecyclerView recyclerView;
-    private ArrayList<RegisterDay> list = new ArrayList<>();
+    private ArrayList<Register> list = new ArrayList<>();
     private MainActivityViewModel viewModel = new MainActivityViewModel();
     DayDataAdapter adapter = new DayDataAdapter(list);
 
@@ -158,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     public void listarColaboradores() {
 
         Register colaborador = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
-        //list.add(colaborador);
+        list.add(colaborador);
 
         Register colaboradora = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
         //list.add(colaboradora);
@@ -173,14 +172,13 @@ public class MainActivity extends AppCompatActivity {
     public void verifyAllRegisters(String type) {
 
         Register pontoGravado = new Register(0, type, getDateTime());
-        RegisterDay pontoGravadoDay = new RegisterDay("pontoGravado", "", "", "");
         if (list.size() < 4) {
             list.clear();
             recyclerView.setVisibility(View.INVISIBLE);
             alertText.setVisibility(View.VISIBLE);
-            registerDay(pontoGravadoDay);
+            registerMoment(pontoGravado);
             ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
-        } else adapter.updateList(pontoGravadoDay);
+        } else adapter.updateList(pontoGravado);
     }
 
     private void countTime() {
@@ -194,16 +192,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void registerDay(RegisterDay registerDay) {
-        if (registerDay.getEntrada() == null) {
-            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-        } else if (registerDay.getSaida() == null) {
-            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-        } else if (registerDay.getSegEntrada() == null) {
-            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-        } else {
-            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-        }
+    private void registerMoment(Register register) {
+
+        //RegisterDay pontoGravado = new RegisterDay();
+//        if (register.getEntrada() == null) {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        } else if (registerDay.getSaida() == null) {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        } else if (registerDay.getSegEntrada() == null) {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        } else {
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
+//        }
 
     }
 }

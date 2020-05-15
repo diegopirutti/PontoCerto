@@ -5,11 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay
+import br.com.devdiegopirutti.pontocertoapp.Model.Register
 import br.com.devdiegopirutti.pontocertoapp.R
 import java.util.*
 
-class DayDataAdapter(var register: ArrayList<RegisterDay>) : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
+class DayDataAdapter(var register: ArrayList<Register>) : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DataViewHolder(LayoutInflater
             .from(parent.context).inflate(R.layout.recycler_day_register, parent, false))
@@ -28,7 +28,7 @@ class DayDataAdapter(var register: ArrayList<RegisterDay>) : RecyclerView.Adapte
         register.addAll(register)
     }
 
-    fun updateList(newRegister: RegisterDay) {
+    fun updateList(newRegister: Register) {
         register.add(newRegister)
         notifyDataSetChanged()
     }
@@ -38,10 +38,10 @@ class DayDataAdapter(var register: ArrayList<RegisterDay>) : RecyclerView.Adapte
         var dataView: TextView? = null
         var registerView: TextView? = null
 
-        fun bind(itemView: RegisterDay) {
+        fun bind(itemView: Register) {
 
-            //dataView?.text = itemView.data
-            registerView?.text = itemView.entrada
+            dataView?.text = itemView.data
+            registerView?.text = itemView.registro
 
 
         }
