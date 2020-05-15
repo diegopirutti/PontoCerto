@@ -8,8 +8,10 @@ data class Register(@PrimaryKey(autoGenerate = true)
                     val id: Int? = 0,
                     var registro: String, var data: String)
 
-data class RegisterDay(var entrada: String, var saida: String,
-                       var segEntrada: String, var segSaida: String)
+data class RegisterDay(var horaUm: String, var entrada: String?,
+                       var horaDois: String, var saida: String?,
+                       var horaTres: String, var segEntrada: String?,
+                       var horaQuatro: String, var segSaida: String?)
 
 data class PontoModel(var timestamp: Long = 0, var registro: Boolean? = null)
 

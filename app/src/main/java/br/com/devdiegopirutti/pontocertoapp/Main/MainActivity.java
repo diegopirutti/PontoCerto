@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel = new MainActivityViewModel();
     DayDataAdapter adapter = new DayDataAdapter(list);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +67,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void initializeViews() {
         if (getSupportActionBar() != null) getSupportActionBar().hide();
-
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         userEmpresa = findViewById(R.id.empresa);
@@ -119,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         alerta = builder.create();
         alerta.show();
     }
-
 
     private void marcarPonto(String tipo) {
         if (tipo.equals("Entrada")) {
@@ -173,11 +169,11 @@ public class MainActivity extends AppCompatActivity {
 
         Register pontoGravado = new Register(0, type, getDateTime());
         if (list.size() < 4) {
-            list.clear();
-            recyclerView.setVisibility(View.INVISIBLE);
-            alertText.setVisibility(View.VISIBLE);
-            registerMoment(pontoGravado);
+            //recyclerView.setVisibility(View.INVISIBLE);
+            //alertText.setVisibility(View.VISIBLE);
             ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
+            registerMoment();
+            list.clear();
         } else adapter.updateList(pontoGravado);
     }
 
@@ -192,9 +188,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void registerMoment(Register register) {
+    private void registerMoment() {
 
-        //RegisterDay pontoGravado = new RegisterDay();
+
+//        RegisterDay pontoGravado = new RegisterDay();
 //        if (register.getEntrada() == null) {
 //            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
 //        } else if (registerDay.getSaida() == null) {

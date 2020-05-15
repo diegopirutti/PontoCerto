@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.devdiegopirutti.pontocertoapp.Model.Register
+import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay
 import br.com.devdiegopirutti.pontocertoapp.R
 import java.util.*
 
@@ -30,6 +31,7 @@ class DayDataAdapter(var register: ArrayList<Register>) : RecyclerView.Adapter<D
 
     fun updateList(newRegister: Register) {
         register.add(newRegister)
+        var registerDay: RegisterDay?
         notifyDataSetChanged()
     }
 
