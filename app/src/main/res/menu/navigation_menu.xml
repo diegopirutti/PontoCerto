@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_colaboradores"
         android:icon="@drawable/ic_person"
-        android:title="@string/title_Colaboradores"/>
+        android:title="Colaboradores"/>
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_add"
         android:icon="@drawable/ic_person_add"
-        android:title="@string/title_Adcionar_Colaborador"/>
+        android:title="Adicionar"/>
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_more"
         android:icon="@drawable/ic_more"
-        android:title="@string/title_outros"/>
-
+        android:title="Outros"/>
 </menu>
