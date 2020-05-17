@@ -5,33 +5,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.devdiegopirutti.pontocertoapp.Model.Register
-import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay
+import br.com.devdiegopirutti.pontocertoapp.Model.Ponto
+import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario
 import br.com.devdiegopirutti.pontocertoapp.R
 import java.util.*
 
-class DayDataAdapter(var register: ArrayList<Register>) : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
+class DayDataAdapter(var ponto: ArrayList<Ponto>) : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DataViewHolder(LayoutInflater
             .from(parent.context).inflate(R.layout.recycler_day_register, parent, false))
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        holder.bind(register[position])
+        holder.bind(ponto[position])
     }
 
-    override fun getItemCount() = register.size
+    override fun getItemCount() = ponto.size
 
     fun clear() {
-        register.clear()
+        ponto.clear()
     }
 
     fun addAllRegisters() {
-        register.addAll(register)
+        ponto.addAll(ponto)
     }
 
-    fun updateList(newRegister: Register) {
-        register.add(newRegister)
-        var registerDay: RegisterDay?
+    fun updateList(newPonto: Ponto) {
+        ponto.add(newPonto)
+        var pontoDiario: PontoDiario?
         notifyDataSetChanged()
     }
 
@@ -40,10 +40,10 @@ class DayDataAdapter(var register: ArrayList<Register>) : RecyclerView.Adapter<D
         var dataView: TextView? = null
         var registerView: TextView? = null
 
-        fun bind(itemView: Register) {
+        fun bind(itemView: Ponto) {
 
-            dataView?.text = itemView.data
-            registerView?.text = itemView.registro
+            //   dataView?.text = itemView.data
+            //   registerView?.text = itemView.entrada
 
 
         }

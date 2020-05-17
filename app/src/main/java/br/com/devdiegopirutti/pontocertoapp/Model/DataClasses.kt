@@ -2,14 +2,22 @@ package br.com.devdiegopirutti.pontocertoapp.Model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
+@Entity(tableName = "register")
+data class Ponto(var entrada: Boolean,
+                 @PrimaryKey
+                 var data: Long)
 
 @Entity(tableName = "registerDay")
-data class Register(@PrimaryKey(autoGenerate = true)
-                    val id: Int? = 0,
-                    var registro: String, var data: String)
-
-data class RegisterDay(var horaUm: Register?, val entrada: Register?,
-                       var horaDois: Register?, var saida: Register?)
+data class PontoDiario(
+        @PrimaryKey(autoGenerate = true)
+        val id: Int? = 0,
+        @TypeConverters(PontoConverter::class)
+        var pontos: List<Ponto>)
 
 data class PontoModel(var timestamp: Long = 0, var registro: Boolean? = null)
 
@@ -21,5 +29,19 @@ data class User(var email: String?, var password: String?)
 
 enum class Events {
     SUCESS, FAILURE, SUCESSADMIN, GRAVARPONTOENTRADA, GRAVARPONTOSAÍDA
+}
+
+class PontoConverter {
+
+    @TypeConverter
+    fun fromJson(list: List<Ponto>): String {
+        return Gson().toJson(list)
+    }
+
+    @TypeConverter
+    fun toJson(json: String): List<Ponto> {
+        val type = object : TypeToken<List<Ponto>>() {}.type
+        return Gson().fromJson<List<Ponto>>(json, type)
+    }
 }
 

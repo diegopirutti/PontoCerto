@@ -26,7 +26,7 @@ import java.util.TimerTask;
 
 import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
-import br.com.devdiegopirutti.pontocertoapp.Model.Register;
+import br.com.devdiegopirutti.pontocertoapp.Model.Ponto;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
     private AlertDialog alerta;
     private RecyclerView recyclerView;
-    private ArrayList<Register> list = new ArrayList<>();
-    private MainActivityViewModel viewModel = new MainActivityViewModel();
+    private ArrayList<Ponto> list = new ArrayList<>();
+    private MainActivityViewModel viewModel;
     DayDataAdapter adapter = new DayDataAdapter(list);
 
     @Override
@@ -47,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewModel = new MainActivityViewModel(((MyApplication) getApplication()).getDatabase());
+
         initializeViews();
         initializeButtons();
         observerResult();
         pegarInformações();
-        listarColaboradores();
         initializeStetho();
     }
 
@@ -135,11 +136,11 @@ public class MainActivity extends AppCompatActivity {
             switch (events) {
                 case GRAVARPONTOENTRADA:
                     generateToastMessage(getString(R.string.pontoEntrada));
-                    verifyAllRegisters("Entrada");
+
                     break;
                 case GRAVARPONTOSAÍDA:
                     generateToastMessage(getString(R.string.pontoSaida));
-                    verifyAllRegisters("Saída");
+
                     break;
                 default:
             }
@@ -147,16 +148,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void pegarInformações() {
-        viewModel.pegarInformaçõesDoUsuario();
-    }
-
-    public void listarColaboradores() {
-
-        Register colaborador = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
-        list.add(colaborador);
-
-        Register colaboradora = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
-
+        viewModel.getUserInformation();
     }
 
     private String getDateTime() {
@@ -165,16 +157,17 @@ public class MainActivity extends AppCompatActivity {
         return dateFormat.format(date);
     }
 
-    public void verifyAllRegisters(String type) {
-        Register pontoGravado = new Register(0, type, getDateTime());
-        if (list.size() >= 4) {
-            //recyclerView.setVisibility(View.INVISIBLE);
-            //alertText.setVisibility(View.VISIBLE);
-            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
-            registerMoment();
-            list.clear();
-        } else adapter.updateList(pontoGravado);
-    }
+
+//    public void verifyAllRegisters(String type) {
+//        Ponto pontoGravado = new Ponto(0, type, getDateTime());
+//        if (list.size() >= 4) {
+//            //recyclerView.setVisibility(View.INVISIBLE);
+//            //alertText.setVisibility(View.VISIBLE);
+//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
+//            registerMoment();
+//            list.clear();
+//        } else adapter.updateList(pontoGravado);
+//    }
 
     private void countTime() {
         Timer timer = new Timer();
