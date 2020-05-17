@@ -33,7 +33,7 @@ public class MainActivityUseCase {
     public Task<Void> sendRegisterDay(PontoDiario pontoDiario) {
         return firebaseDatabase.getReference()
                 .child("/users/")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pontoDiario/" + format("dd/MM/yy", new Date()).toString())
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pontoDiario/" + format("dd-MM-yy", new Date()).toString())
                 .setValue(pontoDiario);
     }
 }

@@ -31,11 +31,10 @@ public class MainActivityViewModel {
     public LiveData<PontoDiario> pontoDiarioMutableLiveData;
 
     public void marcarPonto(String tipo, boolean ponto) {
-        PontoDiario pontoDiario = appDataBase.registerDao().getRegister().getValue();
+        PontoDiario pontoDiario = pontoDiarioMutableLiveData.getValue();
         if (pontoDiario == null) {
             pontoDiario = new PontoDiario(0, new ArrayList<>());
         }
-
         pontoDiario.getPontos().add(new Ponto(ponto, System.currentTimeMillis()));
         appDataBase.registerDao().insertRegister(pontoDiario);
         if (pontoDiario.getPontos().size() == 4) {

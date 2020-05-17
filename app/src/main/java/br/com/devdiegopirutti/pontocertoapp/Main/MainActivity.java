@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.Ponto;
+import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
@@ -86,8 +88,15 @@ public class MainActivity extends AppCompatActivity {
                         }
                 );
 
-        viewModel.pontoDiarioMutableLiveData.observe(this,
-                pontoDiario -> adapter.addAllRegisters(pontoDiario.getPontos()));
+        viewModel.pontoDiarioMutableLiveData.observe(this, new Observer<PontoDiario>() {
+            @Override
+            public void onChanged(PontoDiario pontoDiario) {
+                adapter.clear();
+                if(pontoDiario != null){
+                    adapter.addAllRegisters(pontoDiario.getPontos());
+                }
+            }
+        });
     }
 
     public void initializeButtons() {
