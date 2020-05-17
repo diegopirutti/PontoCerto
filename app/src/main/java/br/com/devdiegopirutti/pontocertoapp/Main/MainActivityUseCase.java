@@ -10,6 +10,8 @@ import java.util.Date;
 import br.com.devdiegopirutti.pontocertoapp.Model.HoraEData;
 import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 
+import static android.text.format.DateFormat.format;
+
 
 public class MainActivityUseCase {
 
@@ -31,7 +33,7 @@ public class MainActivityUseCase {
     public Task<Void> sendRegisterDay(PontoDiario pontoDiario) {
         return firebaseDatabase.getReference()
                 .child("/users/")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pontoDiario/" + new Date())
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pontoDiario/" + format("dd/MM/yy", new Date()).toString())
                 .setValue(pontoDiario);
     }
 }

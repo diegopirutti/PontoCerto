@@ -1,5 +1,6 @@
 package br.com.devdiegopirutti.pontocertoapp.DAO
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import br.com.devdiegopirutti.pontocertoapp.Model.Ponto
 import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario
@@ -11,7 +12,7 @@ interface DaoRegisterDay {
     fun insertRegister(ponto: PontoDiario)
 
     @Query("SELECT * FROM REGISTERDAY WHERE id = 0")
-    fun getRegister(): PontoDiario
+    fun getRegister(): LiveData<PontoDiario>
 
     @Update
     fun updateUser(ponto: Ponto)
