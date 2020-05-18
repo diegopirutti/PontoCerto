@@ -3,13 +3,13 @@ package br.com.devdiegopirutti.pontocertoapp.Main;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,16 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.stetho.Stetho;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
-import br.com.devdiegopirutti.pontocertoapp.Model.Register;
+import br.com.devdiegopirutti.pontocertoapp.Model.Ponto;
+import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
@@ -38,20 +34,21 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
     private AlertDialog alerta;
     private RecyclerView recyclerView;
-    private ArrayList<Register> list = new ArrayList<>();
-    private MainActivityViewModel viewModel = new MainActivityViewModel();
-    DayDataAdapter adapter = new DayDataAdapter(list);
+    private ArrayList<Ponto> list = new ArrayList<>();
+    private MainActivityViewModel viewModel;
+    DayDataAdapter adapter = new DayDataAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        viewModel = new MainActivityViewModel(((MyApplication) getApplication()).getDatabase());
+
         initializeViews();
         initializeButtons();
         observerResult();
         pegarInformações();
-        listarColaboradores();
         initializeStetho();
     }
 
@@ -90,14 +87,22 @@ public class MainActivity extends AppCompatActivity {
                             userName.setText(infoConta.getName());
                         }
                 );
+
+        viewModel.pontoDiarioMutableLiveData.observe(this, new Observer<PontoDiario>() {
+            @Override
+            public void onChanged(PontoDiario pontoDiario) {
+                adapter.clear();
+                if(pontoDiario != null){
+                    adapter.addAllRegisters(pontoDiario.getPontos());
+                }
+            }
+        });
     }
 
     public void initializeButtons() {
-
         intent = new Intent(this, HistoricoActivity.class);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         historico.setOnClickListener(v -> irParaHistorico());
+
         ponto.setOnClickListener(v -> {
             if (list.size() == 1 || list.size() == 3) {
                 AlertConfirmation("Saida");
@@ -135,11 +140,11 @@ public class MainActivity extends AppCompatActivity {
             switch (events) {
                 case GRAVARPONTOENTRADA:
                     generateToastMessage(getString(R.string.pontoEntrada));
-                    verifyAllRegisters("Entrada");
+
                     break;
                 case GRAVARPONTOSAÍDA:
                     generateToastMessage(getString(R.string.pontoSaida));
-                    verifyAllRegisters("Saída");
+
                     break;
                 default:
             }
@@ -147,62 +152,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void pegarInformações() {
-        viewModel.pegarInformaçõesDoUsuario();
+        viewModel.getUserInformation();
     }
 
-    public void listarColaboradores() {
 
-        Register colaborador = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
-        list.add(colaborador);
-
-        Register colaboradora = new Register(0, "Yuri Gonçalves Moreira Orfon", "Desenvolvedor Android Jr");
-
-    }
-
-    private String getDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
-
-    public void verifyAllRegisters(String type) {
-        Register pontoGravado = new Register(0, type, getDateTime());
-        if (list.size() >= 4) {
-            //recyclerView.setVisibility(View.INVISIBLE);
-            //alertText.setVisibility(View.VISIBLE);
-            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegister(pontoGravado);
-            registerMoment();
-            list.clear();
-        } else adapter.updateList(pontoGravado);
-    }
-
-    private void countTime() {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            public void run() {
-                alertText.setVisibility(View.VISIBLE);
-
-            }
-        }, 4000, 100000);
-
-    }
-
-    private void registerMoment() {
-
-
-//        RegisterDay pontoGravado = new RegisterDay();
-//        if (register.getEntrada() == null) {
-//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-//        } else if (registerDay.getSaida() == null) {
-//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-//        } else if (registerDay.getSegEntrada() == null) {
-//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-//        } else {
-//            ((MyApplication) getApplication()).getDatabase().registerDao().insertRegisterDay(registerDay);
-//        }
-
-    }
 }
+
 
 
 
