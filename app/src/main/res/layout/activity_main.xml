@@ -9,12 +9,14 @@
 
     <Button
         android:id="@+id/btn_registro"
-        android:layout_width="206dp"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:background="@drawable/botaocust"
+        android:layout_marginBottom="24dp"
         android:text="registrar"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewMain"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -24,9 +26,9 @@
         android:background="@drawable/botaocust"
         android:text="HISTÓRICO"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_registro" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_boasvindas"
@@ -75,7 +77,7 @@
         android:layout_width="422dp"
         android:layout_height="300dp"
         android:background="@android:color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/btn_registro"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -121,13 +123,26 @@
         android:id="@+id/AlertText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Você já bateu todos os pontos hoje!"
         android:textColor="#FFFFFF"
         android:textSize="18dp"
         android:visibility="gone"
-        android:text="Você já bateu todos os pontos hoje!"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewMain"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewMain"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewMain"
         app:layout_constraintTop_toTopOf="@+id/recyclerViewMain" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_shadow_start_color"
+        app:itemIconTint="#FFFFFFFF"
+        app:itemTextColor="#FFFFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
+        app:menu="@menu/navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package br.com.devdiegopirutti.pontocertoapp.Historico;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import java.util.List;
 
 import br.com.devdiegopirutti.pontocertoapp.Model.HoraEData;
 import br.com.devdiegopirutti.pontocertoapp.Model.PontoModel;
-import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay;
+//import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay;
 import br.com.devdiegopirutti.pontocertoapp.Model.User;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
@@ -25,8 +26,8 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.View
 
     private ArrayList<PontoModel> arrayList = new ArrayList();
 
-    public AdapterHistorico(ArrayList<PontoModel> lista) {
-        this.arrayList = lista;
+    public AdapterHistorico(ArrayList<PontoModel> arrayList) {
+        this.arrayList = arrayList;
     }
 
     @NonNull
@@ -41,12 +42,7 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        PontoModel pontoModel = arrayList.get(position);
-
-
-        //holder.dataTxt.setText(pontoModel.getRegistro());
-
+        //holder.bind(arrayList.get(position));
     }
 
     @Override
@@ -54,41 +50,38 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.View
         return arrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView dataTxt;
-        TextView entradaTxt;
-        TextView saidaTxt;
+        TextView dataTxt, entradaTxt, saidaTxt;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             dataTxt = itemView.findViewById(R.id.data_txt);
             entradaTxt = itemView.findViewById(R.id.entrada_txt);
             saidaTxt = itemView.findViewById(R.id.saida_txt);
-
         }
 
 
-//
-//    void bind(HoraEData horaEData) {
-//
-//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
-//        Date date = new Date();
-//
-//        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-//        Date dateHour = new Date();
-//
-//        String data = dateFormat.format(date);
-//        String dataH = hourFormat.format(dateHour);
+        void bind(HoraEData horaEData) {
 
-//        datatxt.setText(data);
-//        if (entrada) {
-//            horaEData.entrada = entradatxt.setText(dataH);
-//        } else {
-//            horaEData.entrada = saidatxt.setText(dataH);
-//    }
-}
-}
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
+            Date date = new Date();
 
+            DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+            Date dateHour = new Date();
+
+            String data = dateFormat.format(date);
+            String dataH = hourFormat.format(dateHour);
+
+            dataTxt.setText(data);
+            entradaTxt.setText(dataH);
+            saidaTxt.setText(dataH);
+//            if (entrada) {
+//                horaEData.entrada = entradatxt.setText(dataH);
+//            } else {
+//                horaEData.entrada = saidatxt.setText(dataH);
+//            }
+        }
+    }
+}
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".ui.LoginActivity">
+    tools:context=".Login.LoginActivity">
 
     <EditText
         android:id="@+id/edt_email"
@@ -39,13 +39,13 @@
 
     <Button
         android:id="@+id/btn_logar"
-        android:textColor="#ffffff"
-        android:background="@drawable/botaocust"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="entrar"
         android:hint="Senha"
+        android:text="entrar"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="@+id/edt_senha"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/edt_senha"
