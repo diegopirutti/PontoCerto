@@ -26,6 +26,7 @@ class DayDataAdapter : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
 
     fun clear() {
         ponto.clear()
+        notifyDataSetChanged()
     }
 
     fun addAllRegisters(list: List<Ponto>) {
