@@ -19,7 +19,6 @@ data class PontoDiario(
         @TypeConverters(PontoConverter::class)
         var pontos: List<Ponto>)
 
-data class PontoModel(var timestamp: Long = 0, var registro: Boolean? = null)
 
 data class InfoConta(var name: String? = null, var empresa: String? = null)
 

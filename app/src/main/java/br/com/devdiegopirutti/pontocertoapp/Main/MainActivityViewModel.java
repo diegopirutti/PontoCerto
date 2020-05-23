@@ -40,7 +40,7 @@ public class MainActivityViewModel {
         if (pontoDiario.getPontos().size() == 4) {
             PontoDiario finalPontoDiario = pontoDiario;
             usecase.sendRegisterDay(pontoDiario)
-                    .addOnFailureListener(e -> e.printStackTrace())
+                    .addOnFailureListener(Throwable::printStackTrace)
                     .addOnSuccessListener(aVoid -> appDataBase.registerDao()
                             .deleteRegister(finalPontoDiario));
         }

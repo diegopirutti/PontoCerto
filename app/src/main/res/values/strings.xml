@@ -10,4 +10,6 @@
     <string name="pontoEntrada">Você marcou ponto de entrada.</string>
     <string name="pontoSaida">Você marcou ponto de saída.</string>
     <string name="perguntaPonto">Você deseja confirmar o ponto de %1$s?</string>
+    <string name="saida">Saída:</string>
+    <string name="entrada">Entrada:</string>
 </resources>

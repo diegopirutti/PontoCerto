@@ -11,7 +11,7 @@ public class HistUseCase {
     public DatabaseReference pegarInformações() {
         return firebaseDatabase.getReference()
                 .child("/users/")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/ponto/");
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pontoDiario/");
 
     }
 }

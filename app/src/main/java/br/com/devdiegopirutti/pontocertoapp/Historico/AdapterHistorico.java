@@ -8,20 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import br.com.devdiegopirutti.pontocertoapp.Model.HoraEData;
-import br.com.devdiegopirutti.pontocertoapp.Model.PontoModel;
+import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
 public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
 
-    public ArrayList<PontoModel> arrayList = new ArrayList();
+    public ArrayList<PontoDiario> arrayList = new ArrayList();
 
     @NonNull
     @Override
@@ -33,8 +29,8 @@ public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        holder.bind(arrayList.get(position));
-//
+        holder.bind(arrayList.get(position));
+
     }
 
     @Override
@@ -42,7 +38,7 @@ public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
         return arrayList.size();
     }
 
-    public void adicionarItens(List<PontoModel> list) {
+    public void adicionarItens(List<PontoDiario> list) {
         list.addAll(list);
         notifyDataSetChanged();
     }
@@ -50,33 +46,32 @@ public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
 
 class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView datatxt, entradatxt, saidatxt;
+    TextView datatxt;
+    TextView entradatxt;
+    TextView saidatxt;
+    TextView entradaseg;
+    TextView saidaseg;
 
     ViewHolder(@NonNull View itemView) {
         super(itemView);
         datatxt = (itemView).findViewById(R.id.data_txt);
         entradatxt = (itemView).findViewById(R.id.txtEntValorRetornado);
         saidatxt = (itemView).findViewById(R.id.txtSaidaValorRetornado);
+        entradaseg = (itemView).findViewById(R.id.txtEntValorRetornadoSeg);
+        saidaseg = (itemView).findViewById(R.id.txtSaidaValorRetornadoSeg);
     }
 
-    void bind(HoraEData horaEData) {
+    void bind(PontoDiario pontoDiario) {
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
-        Date date = new Date();
+        entradatxt.setText(String.valueOf(pontoDiario.getPontos().get(0).getData()));
+        saidatxt.setText(String.valueOf(pontoDiario.getPontos().get(1).getData()));
+        entradaseg.setText(String.valueOf(pontoDiario.getPontos().get(2).getData()));
+        saidaseg.setText(String.valueOf(pontoDiario.getPontos().get(3).getData()));
 
-        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-        Date dateHour = new Date();
-
-        String data = dateFormat.format(date);
-        String dataH = hourFormat.format(dateHour);
-
-        //datatxt.setText(data);
-//        if (entrada) {
-//            horaEData.entrada = entradatxt.setText(dataH);
-//        } else {
-//            horaEData.entrada = saidatxt.setText(dataH);
     }
+
+
 }
-//}
+
 
 

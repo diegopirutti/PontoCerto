@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,11 +17,11 @@ import com.facebook.stetho.Stetho;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.Ponto;
-import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
@@ -43,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = new MainActivityViewModel(((MyApplication) getApplication()).getDatabase());
+        viewModel = new MainActivityViewModel(Objects.requireNonNull(((MyApplication) getApplication()).getDatabase()));
 
         initializeViews();
         initializeButtons();
         observerResult();
-        pegarInformações();
+        getUserInformationForView();
         initializeStetho();
     }
 
@@ -88,13 +87,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                 );
 
-        viewModel.pontoDiarioMutableLiveData.observe(this, new Observer<PontoDiario>() {
-            @Override
-            public void onChanged(PontoDiario pontoDiario) {
-                adapter.clear();
-                if(pontoDiario != null){
-                    adapter.addAllRegisters(pontoDiario.getPontos());
-                }
+        viewModel.pontoDiarioMutableLiveData.observe(this, pontoDiario -> {
+            adapter.clear();
+            if (pontoDiario != null) {
+                adapter.addAllRegisters(pontoDiario.getPontos());
             }
         });
     }
@@ -151,11 +147,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void pegarInformações() {
+    void getUserInformationForView() {
         viewModel.getUserInformation();
     }
-
-
 }
 
 
