@@ -1,6 +1,5 @@
 package br.com.devdiegopirutti.pontocertoapp.Historico;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,40 +8,34 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import br.com.devdiegopirutti.pontocertoapp.Model.HoraEData;
-import br.com.devdiegopirutti.pontocertoapp.Model.PontoModel;
-//import br.com.devdiegopirutti.pontocertoapp.Model.RegisterDay;
-import br.com.devdiegopirutti.pontocertoapp.Model.User;
+import br.com.devdiegopirutti.pontocertoapp.Model.Ponto;
+import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
+import static android.text.format.DateFormat.format;
 
-public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.ViewHolder> {
 
-    private ArrayList<PontoModel> arrayList = new ArrayList();
+public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
 
-    public AdapterHistorico(ArrayList<PontoModel> arrayList) {
-        this.arrayList = arrayList;
-    }
+    public ArrayList<PontoDiario> arrayList = new ArrayList();
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.model_historico, parent, false);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_historico,
+                parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.bind(arrayList.get(position));
+        holder.bind(arrayList.get(position));
+
     }
 
     @Override
@@ -50,38 +43,43 @@ public class AdapterHistorico extends RecyclerView.Adapter<AdapterHistorico.View
         return arrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        TextView dataTxt, entradaTxt, saidaTxt;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            dataTxt = itemView.findViewById(R.id.data_txt);
-            entradaTxt = itemView.findViewById(R.id.entrada_txt);
-            saidaTxt = itemView.findViewById(R.id.saida_txt);
-        }
-
-
-        void bind(HoraEData horaEData) {
-
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
-            Date date = new Date();
-
-            DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
-            Date dateHour = new Date();
-
-            String data = dateFormat.format(date);
-            String dataH = hourFormat.format(dateHour);
-
-            dataTxt.setText(data);
-            entradaTxt.setText(dataH);
-            saidaTxt.setText(dataH);
-//            if (entrada) {
-//                horaEData.entrada = entradatxt.setText(dataH);
-//            } else {
-//                horaEData.entrada = saidatxt.setText(dataH);
-//            }
-        }
+    public void adicionarItens(List<PontoDiario> list) {
+        arrayList.addAll(list);
+        notifyDataSetChanged();
     }
 }
+
+class ViewHolder extends RecyclerView.ViewHolder {
+
+    private TextView datatxt;
+    private TextView entradatxt;
+    private TextView saidatxt;
+    private TextView entradaseg;
+    private TextView saidaseg;
+
+    ViewHolder(@NonNull View itemView) {
+        super(itemView);
+        datatxt = (itemView).findViewById(R.id.data_txt);
+        entradatxt = (itemView).findViewById(R.id.entrada_txt);
+        saidatxt = (itemView).findViewById(R.id.saida_txt);
+        entradaseg = (itemView).findViewById(R.id.entradaSeg_txt);
+        saidaseg = (itemView).findViewById(R.id.saidaSeg_txt);
+    }
+
+    void bind(PontoDiario pontoDiario) {
+        datatxt.setText(pontoDiario.getData());
+        entradatxt.setText(timeStampConverter(pontoDiario.getPontos().get(0)));
+        saidatxt.setText(timeStampConverter(pontoDiario.getPontos().get(1)));
+        entradaseg.setText(timeStampConverter(pontoDiario.getPontos().get(2)));
+        saidaseg.setText(timeStampConverter(pontoDiario.getPontos().get(3)));
+    }
+
+    private String timeStampConverter(Ponto ponto) {
+        return (ponto.getEntrada() ? "Entrada " : "Saída ") + format("HH:mm:ss", new Date(new Timestamp(ponto.getData()).getTime())).toString();
+    }
+
+
+}
+
+
 

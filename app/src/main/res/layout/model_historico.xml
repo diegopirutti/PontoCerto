@@ -1,58 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="140dp">
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/data_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="16dp"
         android:text="DATA"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/marca_txt"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/marca_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Marcações:"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/data_txt"
-        app:layout_constraintTop_toBottomOf="@+id/data_txt" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/entrada_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="entrada: "
-        app:layout_constraintStart_toStartOf="@+id/marca_txt"
+        android:text="Entrada: "
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/marca_txt" />
 
     <TextView
         android:id="@+id/saida_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:text="saida: "
-        app:layout_constraintBottom_toBottomOf="@+id/entrada_txt"
-        app:layout_constraintStart_toEndOf="@+id/entrada_txt"
-        app:layout_constraintTop_toTopOf="@+id/entrada_txt"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_marginTop="16dp"
+        android:text="Saída: "
+        app:layout_constraintStart_toStartOf="@+id/entrada_txt"
+        app:layout_constraintTop_toBottomOf="@+id/entrada_txt" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="15dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/time" />
@@ -69,25 +68,53 @@
         app:layout_constraintTop_toBottomOf="@+id/entrada_txt"
         app:layout_constraintVertical_bias="0.939" />
 
-    <TextView
-        android:id="@+id/txtEntValorRetornado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="txtVEnt"
-        app:layout_constraintBottom_toBottomOf="@+id/entrada_txt"
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/time" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintStart_toEndOf="@+id/entrada_txt"
-        app:layout_constraintTop_toTopOf="@+id/entrada_txt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/time" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="15dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/time" />
 
     <TextView
-        android:id="@+id/txtSaidaValorRetornado"
+        android:id="@+id/entradaSeg_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="txtVSaida"
-        app:layout_constraintBottom_toBottomOf="@+id/saida_txt"
-        app:layout_constraintStart_toEndOf="@+id/saida_txt"
-        app:layout_constraintTop_toTopOf="@+id/saida_txt"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/entrada"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/saidaSeg_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/saida"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

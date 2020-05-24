@@ -33,14 +33,14 @@ public class MainActivityViewModel {
     public void marcarPonto(String tipo, boolean ponto) {
         PontoDiario pontoDiario = pontoDiarioMutableLiveData.getValue();
         if (pontoDiario == null) {
-            pontoDiario = new PontoDiario(0, new ArrayList<>());
+            pontoDiario = new PontoDiario(0, new ArrayList<>(), null);
         }
         pontoDiario.getPontos().add(new Ponto(ponto, System.currentTimeMillis()));
         appDataBase.registerDao().insertRegister(pontoDiario);
         if (pontoDiario.getPontos().size() == 4) {
             PontoDiario finalPontoDiario = pontoDiario;
             usecase.sendRegisterDay(pontoDiario)
-                    .addOnFailureListener(e -> e.printStackTrace())
+                    .addOnFailureListener(Throwable::printStackTrace)
                     .addOnSuccessListener(aVoid -> appDataBase.registerDao()
                             .deleteRegister(finalPontoDiario));
         }

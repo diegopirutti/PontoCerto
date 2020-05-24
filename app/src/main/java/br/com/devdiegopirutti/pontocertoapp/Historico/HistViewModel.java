@@ -11,23 +11,22 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.devdiegopirutti.pontocertoapp.Model.PontoModel;
-
+import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 
 public class HistViewModel extends ViewModel {
 
-    public MutableLiveData<List<PontoModel>> pontoLiveData = new MutableLiveData();
+    public MutableLiveData<List<PontoDiario>> pontoLiveData = new MutableLiveData();
     public HistUseCase usecase = new HistUseCase();
 
     public void getData() {
-        usecase.pegarInformações()
+        usecase.getDateInformationFromFirebase()
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ArrayList<PontoModel> pontosBatidos = new ArrayList();
+                        ArrayList<PontoDiario> pontosBatidos = new ArrayList();
 
                         for (DataSnapshot listData : dataSnapshot.getChildren()) {
-                            pontosBatidos.add(listData.getValue(PontoModel.class));
+                            pontosBatidos.add(listData.getValue(PontoDiario.class));
                         }
 
                         pontoLiveData.postValue(pontosBatidos);
