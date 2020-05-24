@@ -40,11 +40,11 @@ class DayDataAdapter : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
         var registerView: TextView? = view.findViewById(R.id.txt_tipo_de_ponto)
 
         fun bind(itemPonto: Ponto) {
-            dataView?.text = timeStampConverter(itemPonto.data)
-            if (itemPonto.entrada) {
-                registerView?.text = "entrada"
-            } else {
-                registerView?.text = "saída"
+            dataView?.text = itemPonto.data?.let { timeStampConverter(it) }
+            itemPonto.entrada?.let {
+                if (it) {
+                    registerView?.text = "entrada"
+                }
             }
         }
 

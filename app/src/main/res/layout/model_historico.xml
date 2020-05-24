@@ -68,28 +68,6 @@
         app:layout_constraintTop_toBottomOf="@+id/entrada_txt"
         app:layout_constraintVertical_bias="0.939" />
 
-    <TextView
-        android:id="@+id/txtEntValorRetornado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="txtVEnt"
-        app:layout_constraintBottom_toBottomOf="@+id/entrada_txt"
-        app:layout_constraintStart_toEndOf="@+id/entrada_txt"
-        app:layout_constraintTop_toTopOf="@+id/entrada_txt"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/txtSaidaValorRetornado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:text="txtVSaida"
-        app:layout_constraintBottom_toBottomOf="@+id/saida_txt"
-        app:layout_constraintStart_toEndOf="@+id/saida_txt"
-        app:layout_constraintTop_toTopOf="@+id/saida_txt"
-        app:layout_constraintVertical_bias="0.0" />
-
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="15dp"
@@ -104,9 +82,9 @@
         android:id="@+id/imageView7"
         android:layout_width="15dp"
         android:layout_height="24dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="52dp"
-        app:layout_constraintStart_toEndOf="@+id/txtEntValorRetornado"
+        app:layout_constraintStart_toEndOf="@+id/entrada_txt"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/time" />
 
@@ -125,6 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
         android:text="@string/entrada"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView7" />
@@ -138,21 +117,4 @@
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
-    <TextView
-        android:id="@+id/txtEntValorRetornadoSeg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="TTTT"
-        app:layout_constraintStart_toEndOf="@+id/entradaSeg_txt"
-        app:layout_constraintTop_toTopOf="@+id/entradaSeg_txt" />
-
-    <TextView
-        android:id="@+id/txtSaidaValorRetornadoSeg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="txtVSaida"
-        app:layout_constraintStart_toEndOf="@+id/saidaSeg_txt"
-        app:layout_constraintTop_toTopOf="@+id/saidaSeg_txt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

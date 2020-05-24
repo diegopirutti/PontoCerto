@@ -13,14 +13,13 @@ import java.util.List;
 
 import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 
-
 public class HistViewModel extends ViewModel {
 
     public MutableLiveData<List<PontoDiario>> pontoLiveData = new MutableLiveData();
     public HistUseCase usecase = new HistUseCase();
 
     public void getData() {
-        usecase.pegarInformações()
+        usecase.getDateInformationFromFirebase()
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

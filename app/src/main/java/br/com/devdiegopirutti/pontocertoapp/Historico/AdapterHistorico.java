@@ -8,11 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import br.com.devdiegopirutti.pontocertoapp.Model.Ponto;
 import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 import br.com.devdiegopirutti.pontocertoapp.R;
+
+import static android.text.format.DateFormat.format;
 
 
 public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
@@ -39,35 +44,38 @@ public class AdapterHistorico extends RecyclerView.Adapter<ViewHolder> {
     }
 
     public void adicionarItens(List<PontoDiario> list) {
-        list.addAll(list);
+        arrayList.addAll(list);
         notifyDataSetChanged();
     }
 }
 
 class ViewHolder extends RecyclerView.ViewHolder {
 
-    TextView datatxt;
-    TextView entradatxt;
-    TextView saidatxt;
-    TextView entradaseg;
-    TextView saidaseg;
+    private TextView datatxt;
+    private TextView entradatxt;
+    private TextView saidatxt;
+    private TextView entradaseg;
+    private TextView saidaseg;
 
     ViewHolder(@NonNull View itemView) {
         super(itemView);
         datatxt = (itemView).findViewById(R.id.data_txt);
-        entradatxt = (itemView).findViewById(R.id.txtEntValorRetornado);
-        saidatxt = (itemView).findViewById(R.id.txtSaidaValorRetornado);
-        entradaseg = (itemView).findViewById(R.id.txtEntValorRetornadoSeg);
-        saidaseg = (itemView).findViewById(R.id.txtSaidaValorRetornadoSeg);
+        entradatxt = (itemView).findViewById(R.id.entrada_txt);
+        saidatxt = (itemView).findViewById(R.id.saida_txt);
+        entradaseg = (itemView).findViewById(R.id.entradaSeg_txt);
+        saidaseg = (itemView).findViewById(R.id.saidaSeg_txt);
     }
 
     void bind(PontoDiario pontoDiario) {
+        datatxt.setText(pontoDiario.getData());
+        entradatxt.setText(timeStampConverter(pontoDiario.getPontos().get(0)));
+        saidatxt.setText(timeStampConverter(pontoDiario.getPontos().get(1)));
+        entradaseg.setText(timeStampConverter(pontoDiario.getPontos().get(2)));
+        saidaseg.setText(timeStampConverter(pontoDiario.getPontos().get(3)));
+    }
 
-        entradatxt.setText(String.valueOf(pontoDiario.getPontos().get(0).getData()));
-        saidatxt.setText(String.valueOf(pontoDiario.getPontos().get(1).getData()));
-        entradaseg.setText(String.valueOf(pontoDiario.getPontos().get(2).getData()));
-        saidaseg.setText(String.valueOf(pontoDiario.getPontos().get(3).getData()));
-
+    private String timeStampConverter(Ponto ponto) {
+        return (ponto.getEntrada() ? "Entrada " : "Saída ") + format("HH:mm:ss", new Date(new Timestamp(ponto.getData()).getTime())).toString();
     }
 
 

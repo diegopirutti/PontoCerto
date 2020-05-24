@@ -19,11 +19,12 @@ public class HistoricoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico_);
 
-        iniatilizeRecycler();
+        initializeRecycler();
         receiveModelList();
     }
 
-    private void iniatilizeRecycler() {
+    private void initializeRecycler() {
+
         RecyclerView recyclerView = findViewById(R.id.recycler_hist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapterHistorico);
@@ -31,8 +32,9 @@ public class HistoricoActivity extends AppCompatActivity {
 
 
     public void receiveModelList() {
-        viewModel.pontoLiveData.observe(this, pontoModel -> {
-            adapterHistorico.adicionarItens(pontoModel);
+        viewModel.pontoLiveData.observe(this, resultDay -> {
+            adapterHistorico.adicionarItens(resultDay);
         });
+        viewModel.getData();
     }
 }
