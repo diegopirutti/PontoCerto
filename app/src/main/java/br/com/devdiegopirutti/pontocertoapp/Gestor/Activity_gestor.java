@@ -1,11 +1,11 @@
 package br.com.devdiegopirutti.pontocertoapp.Gestor;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -48,7 +48,7 @@ public class Activity_gestor extends AppCompatActivity implements NavigationView
                 fragment = new ColaboradoresFragment();
                 break;
             case R.id.navigation_add:
-                fragment = new AdicionarFragment();
+                fragment = new AdicionarUsuarioFragment();
                 break;
             case R.id.navigation_more:
                 fragment = new OutrosFragment();
