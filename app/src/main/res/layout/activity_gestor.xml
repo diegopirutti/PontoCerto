@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/degrade_fundo"
-    tools:context=".Gestor.Activity_gestor">
+    tools:context=".Gestor.ManagerActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container"

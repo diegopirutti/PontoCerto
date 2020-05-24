@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.com.devdiegopirutti.pontocertoapp.Gestor.Activity_gestor;
+import br.com.devdiegopirutti.pontocertoapp.Gestor.ManagerActivity;
 import br.com.devdiegopirutti.pontocertoapp.Main.MainActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.User;
 import br.com.devdiegopirutti.pontocertoapp.R;
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginSuccessToAdmView() {
-        startActivity(new Intent(this, Activity_gestor.class));
+        startActivity(new Intent(this, ManagerActivity.class));
     }
 
 }
