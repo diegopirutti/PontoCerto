@@ -4,12 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.devdiegopirutti.pontocertoapp.Model.UsersToGestor
 import br.com.devdiegopirutti.pontocertoapp.R
 
 
-class AdapterColaboradores(var arrayList: ArrayList<UsersToGestor>, var context: Context) : RecyclerView.Adapter<AdapterColaboradores.ViewHolderColaboradores>() {
+class AdapterColaboradores(var arrayListBase: ArrayList<UsersToGestor>, var context: Context) : RecyclerView.Adapter<AdapterColaboradores.ViewHolderColaboradores>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderColaboradores {
@@ -17,13 +18,23 @@ class AdapterColaboradores(var arrayList: ArrayList<UsersToGestor>, var context:
         return ViewHolderColaboradores(view)
     }
 
-    override fun getItemCount(): Int = arrayList.size
+    override fun getItemCount(): Int = arrayListBase.size
 
     override fun onBindViewHolder(holder: ViewHolderColaboradores, position: Int) {
+        holder.bind(arrayListBase[position])
+    }
+
+    fun addAll(arrayList: ArrayList<UsersToGestor>) {
+        arrayListBase.addAll(arrayList)
 
     }
 
     class ViewHolderColaboradores(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var nameTxt: TextView? = itemView.findViewById(R.id.textView5)
+
+        fun bind(usersToGestor: UsersToGestor) {
+            nameTxt?.text = usersToGestor.name
+        }
 
     }
 }
