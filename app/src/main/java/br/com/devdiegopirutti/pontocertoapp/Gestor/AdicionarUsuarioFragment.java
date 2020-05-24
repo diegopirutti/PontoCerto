@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import br.com.devdiegopirutti.pontocertoapp.R;
 
-public class AdicionarFragment extends Fragment {
+public class AdicionarUsuarioFragment extends Fragment {
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
