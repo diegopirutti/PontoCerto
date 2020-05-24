@@ -13,7 +13,7 @@ import kotlin.collections.ArrayList
 
 class DayDataAdapter : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
 
-    private val ponto = ArrayList<Ponto>()
+    val ponto = ArrayList<Ponto>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DataViewHolder(LayoutInflater
             .from(parent.context).inflate(R.layout.recycler_day_register, parent, false))
@@ -26,6 +26,7 @@ class DayDataAdapter : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
 
     fun clear() {
         ponto.clear()
+        notifyDataSetChanged()
     }
 
     fun addAllRegisters(list: List<Ponto>) {
@@ -39,11 +40,11 @@ class DayDataAdapter : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
         var registerView: TextView? = view.findViewById(R.id.txt_tipo_de_ponto)
 
         fun bind(itemPonto: Ponto) {
-            dataView?.text = timeStampConverter(itemPonto.data)
-            if (itemPonto.entrada) {
-                registerView?.text = "entrada"
-            } else {
-                registerView?.text = "saída"
+            dataView?.text = itemPonto.data?.let { timeStampConverter(it) }
+            itemPonto.entrada?.let {
+                if (it) {
+                    registerView?.text = "entrada"
+                }
             }
         }
 
