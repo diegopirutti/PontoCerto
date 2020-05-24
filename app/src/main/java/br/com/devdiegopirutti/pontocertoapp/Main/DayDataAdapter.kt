@@ -13,7 +13,7 @@ import kotlin.collections.ArrayList
 
 class DayDataAdapter : RecyclerView.Adapter<DayDataAdapter.DataViewHolder>() {
 
-    private val ponto = ArrayList<Ponto>()
+    val ponto = ArrayList<Ponto>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DataViewHolder(LayoutInflater
             .from(parent.context).inflate(R.layout.recycler_day_register, parent, false))

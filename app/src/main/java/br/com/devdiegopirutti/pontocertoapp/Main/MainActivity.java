@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         historico.setOnClickListener(v -> irParaHistorico());
 
         ponto.setOnClickListener(v -> {
-            if (list.size() == 1 || list.size() == 3) {
+            if (adapter.getPonto().size() == 1 || adapter.getPonto().size() == 3) {
                 AlertConfirmation("Saida");
             } else {
                 AlertConfirmation("Entrada");
