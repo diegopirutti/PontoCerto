@@ -7,26 +7,30 @@
     android:background="@drawable/degrade_fundo"
     tools:context=".Main.MainActivity">
 
-    <Button
-        android:id="@+id/hist_btn"
-        android:layout_width="206dp"
-        android:layout_height="50dp"
-        android:background="@drawable/botaocust"
-        android:text="HISTÓRICO"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_registro" />
+<!--    <Button-->
+<!--        android:id="@+id/hist_btn"-->
+<!--        android:layout_width="206dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/botaocust"-->
+<!--        android:text="HISTÓRICO"-->
+<!--        android:textColor="#ffffff"-->
+<!--        tools:layout_editor_absoluteX="205dp"-->
+<!--        tools:layout_editor_absoluteY="682dp" />-->
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_registro"
-        android:background="@drawable/botaocust"
-        android:textColor="#ffffffff"
-        android:layout_width="205dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"
         android:text="registrar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#ffffffff"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view3" />
 
     <TextView
         android:id="@+id/textView_boasvindas"
@@ -73,9 +77,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMain"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="290dp"
         android:background="@android:color/background_light"
-        app:layout_constraintBottom_toTopOf="@+id/hist_btn"
+        app:layout_constraintBottom_toTopOf="@+id/view3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -130,26 +134,25 @@
         app:layout_constraintStart_toStartOf="@+id/recyclerViewMain"
         app:layout_constraintTop_toTopOf="@+id/recyclerViewMain" />
 
-<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--            android:id="@+id/navigation_view"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/cardview_shadow_start_color"-->
-<!--            app:itemIconTint="#FFFFFFFF"-->
-<!--            app:itemTextColor="#FFFFFFFF"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/fragment_container"-->
-<!--            app:menu="@menu/navigation_menu" />-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_shadow_start_color"
+        app:itemIconTint="#FFFFFFFF"
+        app:itemTextColor="#FFFFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_menu" />
 
-<!--    <View-->
-<!--        android:id="@+id/view3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:background="@android:color/white"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/navigation_view"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
+    <View
+        android:id="@+id/view3"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/navigation_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.stetho.Stetho;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +30,7 @@ import br.com.devdiegopirutti.pontocertoapp.Model.Ponto;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private TextView userName, userEmpresa, alertText;
     private FirebaseAuth firebaseAuth;
@@ -54,6 +55,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         observerResult();
         getUserInformationForView();
         initializeStetho();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_view);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_historico:
+                        startActivity(new Intent(getApplicationContext()
+                                ,HistoricoActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_home:
+                        return true;
+                    case R.id.exit:
+                        firebaseAuth.getInstance().signOut();
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     private void initializeStetho() {
@@ -75,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         userEmpresa = findViewById(R.id.empresa);
         userName = findViewById(R.id.txt_nome);
-        historico = findViewById(R.id.hist_btn);
+        //historico = findViewById(R.id.hist_btn);
         ponto = findViewById(R.id.btn_registro);
         recyclerView = findViewById(R.id.recyclerViewMain);
         alertText = findViewById(R.id.AlertText);
@@ -103,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void initializeButtons() {
         intent = new Intent(this, HistoricoActivity.class);
-        historico.setOnClickListener(v -> irParaHistorico());
+        //historico.setOnClickListener(v -> irParaHistorico());
 
         ponto.setOnClickListener(v -> {
             if (adapter.getPonto().size() == 1 || adapter.getPonto().size() == 3) {
@@ -157,23 +179,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewModel.getUserInformation();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.navigation_colaboradores_user:
-                item.setOnMenuItemClickListener(item1 -> {
-                    if (adapter.getPonto().size() == 1 || adapter.getPonto().size() == 3) {
-                        AlertConfirmation("Saida");
-                    } else {
-                        AlertConfirmation("Entrada");
-                    }
-
-                    return true;
-                });
-
-        }
-        return false;
-    }
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.navigation_home:
+//                item.setOnMenuItemClickListener(item1 -> {
+//                    if (adapter.getPonto().size() == 1 || adapter.getPonto().size() == 3) {
+//                        AlertConfirmation("Saida");
+//                    } else {
+//                        AlertConfirmation("Entrada");
+//                    }
+//
+//                    return true;
+//                });
+//
+//
+//        }
+//        return false;
+//    }
 }
 
 
