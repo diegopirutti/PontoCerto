@@ -47,7 +47,7 @@ public class ManagerActivity extends AppCompatActivity {
                         return true;
                     case R.id.exit:
                         firebaseAuth.getInstance().signOut();
-
+                        break;
                 }
                 return false;
             }
