@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.Gestor
+package br.com.devdiegopirutti.pontocertoapp.Manager
 
 import android.content.Context
 import android.view.LayoutInflater

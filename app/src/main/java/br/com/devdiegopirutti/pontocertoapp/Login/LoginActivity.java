@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.com.devdiegopirutti.pontocertoapp.Gestor.ManagerActivity;
 import br.com.devdiegopirutti.pontocertoapp.Main.MainActivity;
+import br.com.devdiegopirutti.pontocertoapp.Manager.ManagerActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.User;
 import br.com.devdiegopirutti.pontocertoapp.R;
 

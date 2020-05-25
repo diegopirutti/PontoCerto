@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.Gestor
+package br.com.devdiegopirutti.pontocertoapp.Manager
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference

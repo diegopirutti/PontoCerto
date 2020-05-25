@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.Gestor
+package br.com.devdiegopirutti.pontocertoapp.Manager
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

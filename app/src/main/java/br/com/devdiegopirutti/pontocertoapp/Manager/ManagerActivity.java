@@ -1,4 +1,4 @@
-package br.com.devdiegopirutti.pontocertoapp.Gestor;
+package br.com.devdiegopirutti.pontocertoapp.Manager;
 
 import android.os.Bundle;
 
@@ -22,7 +22,8 @@ public class ManagerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestor);
-
+        initializeViews();
+        receiveModelList();
 
     }
 
