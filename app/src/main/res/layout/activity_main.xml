@@ -23,7 +23,7 @@
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="205dp"
         android:layout_height="50dp"
-        android:text="regestrar"
+        android:text="registrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

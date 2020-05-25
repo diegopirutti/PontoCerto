@@ -3,7 +3,6 @@ package br.com.devdiegopirutti.pontocertoapp.Manager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ import br.com.devdiegopirutti.pontocertoapp.R;
 
 public class ManagerActivity extends AppCompatActivity {
 
-    ArrayList<UsersToGestor> arrayList;
+    ArrayList<UsersToGestor> arrayList = new ArrayList<>();
     AdapterWorkers adapterWorkers = new AdapterWorkers(arrayList, this);
     ManagerViewModel managerViewModel = new ManagerViewModel();
     RecyclerView recyclerView;
@@ -28,16 +27,16 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
     private void initializeViews() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_hist);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapterWorkers);
+//        recyclerView = findViewById(R.id.recycler_hist);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(adapterWorkers);
     }
 
     public void receiveModelList() {
-        managerViewModel.getUsersList().observe(this, it -> {
-            adapterWorkers.addAllUsers((ArrayList<UsersToGestor>) it);
-        });
-        managerViewModel.getUserInformation();
+//        managerViewModel.getUsersList().observe(this, it -> {
+//            adapterWorkers.addAllUsers((ArrayList<UsersToGestor>) it);
+//        });
+//        managerViewModel.getUserInformation();
 
     }
 
