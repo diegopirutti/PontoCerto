@@ -1,22 +1,44 @@
 package br.com.devdiegopirutti.pontocertoapp.Manager
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.com.devdiegopirutti.pontocertoapp.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 
 class AddUserActivity : AppCompatActivity() {
-
+    var firebaseAuth: FirebaseAuth? = null
     companion object {
         val TAG = "RegisterActivity"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.register_login)
+        setContentView(R.layout.fragment_adicionar)
 
 //        btn_entrar_dois.setOnClickListener {
 //            performRegister()
 //        }
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation_view)
+        bottomNavigationView.selectedItemId = R.id.navigation_colaboradores
+        bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_colaboradores -> {
+                    startActivity(Intent(applicationContext
+                            , ManagerActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_add -> return@OnNavigationItemSelectedListener true
+                R.id.exit -> {
+                    FirebaseAuth.getInstance().signOut()
+                }
+            }
+            false
+        })
 
     }
 

@@ -8,10 +8,10 @@
     <item
         android:id="@+id/navigation_add"
         android:icon="@drawable/ic_person_add"
-        android:title="Adicionar"/>
+        android:title="Adicionar Colaborador"/>
 
     <item
-        android:id="@+id/navigation_more"
-        android:icon="@drawable/ic_more"
-        android:title="Outros"/>
+        android:id="@+id/exit"
+        android:icon="@drawable/ic_exit_to_app_24dp"
+        android:title="Sair"/>
 </menu>

@@ -1,9 +1,16 @@
 package br.com.devdiegopirutti.pontocertoapp.Manager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -16,6 +23,7 @@ public class ManagerActivity extends AppCompatActivity {
     AdapterWorkers adapterWorkers = new AdapterWorkers(arrayList, this);
     ManagerViewModel managerViewModel = new ManagerViewModel();
     RecyclerView recyclerView;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,26 @@ public class ManagerActivity extends AppCompatActivity {
         initializeViews();
         receiveModelList();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_view);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_colaboradores);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_add:
+                        startActivity(new Intent(getApplicationContext()
+                        ,AddUserActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.navigation_colaboradores:
+                        return true;
+                    case R.id.exit:
+                        firebaseAuth.getInstance().signOut();
+
+                }
+                return false;
+            }
+        });
     }
 
     private void initializeViews() {
