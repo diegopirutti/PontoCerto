@@ -1,35 +1,62 @@
 package br.com.devdiegopirutti.pontocertoapp.Manager
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import br.com.devdiegopirutti.pontocertoapp.Model.User
+import br.com.devdiegopirutti.pontocertoapp.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.fragment_adicionar.*
 
 class AddUserActivity : AppCompatActivity() {
-
+    var firebaseAuth: FirebaseAuth? = null
     companion object {
         val TAG = "RegisterActivity"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.register_login)
+        setContentView(R.layout.fragment_adicionar)
 
-//        btn_entrar_dois.setOnClickListener {
-//            performRegister()
-//        }
+        btn_entrar_dois.setOnClickListener {
+            performRegister()
+        }
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navigation_view)
+        bottomNavigationView.selectedItemId = R.id.navigation_colaboradores
+        bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_colaboradores -> {
+                    startActivity(Intent(applicationContext
+                            , ManagerActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_add -> return@OnNavigationItemSelectedListener true
+                R.id.exit -> {
+                    firebaseAuth?.signOut()
+                    //FirebaseAuth.getInstance().signOut()
+                }
+            }
+            false
+        })
 
     }
 
     private fun performRegister() {
-//        val email = mail_cadastrar.text.toString()
-//        val password = pass_cadastrar.text.toString()
-
+//        val email = mail_cadastrar.toString()
+//        val password = pass_cadastrar.toString()
+//
 //        if (email.isEmpty() || password.isEmpty()) {
 //            Toast.makeText(this, "Coloque e-mail e senha", Toast.LENGTH_SHORT).show()
 //            return
 //        }
 //
-//        Log.d(TAG, "tentativa de cdriar um mail: $email")
+//        Log.d(TAG, "tentativa de criar um mail: $email")
 //
 //        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
 //                .addOnCompleteListener {
@@ -43,11 +70,11 @@ class AddUserActivity : AppCompatActivity() {
 //                    Toast.makeText(this, "deu erro!: ${it.message}", Toast.LENGTH_SHORT).show()
 //                }
     }
-
+//
 //    private fun saveUserToFirebaseDatabase() {
 //        val uid = FirebaseAuth.getInstance().uid ?: ""
 //        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-//        val user = User( nome_cadastro.text.toString(), uid)
+//        val user = User( nome_cadastro.toString(), uid)
 //
 //        ref.setValue(user)
 //                .addOnSuccessListener {
