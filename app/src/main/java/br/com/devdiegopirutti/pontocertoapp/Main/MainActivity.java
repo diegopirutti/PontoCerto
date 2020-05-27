@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.facebook.stetho.Stetho;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.internal.NavigationMenu;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -68,6 +67,14 @@ public class MainActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.navigation_home:
+                        item.setOnMenuItemClickListener(v -> {
+                            if (adapter.getPonto().size() == 1 || adapter.getPonto().size() == 3) {
+                                AlertConfirmation("Saida");
+                            } else {
+                                AlertConfirmation("Entrada");
+                            }
+                            return true;
+                        });
                         return true;
                     case R.id.exit:
                         firebaseAuth.getInstance().signOut();
@@ -127,13 +134,7 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(this, HistoricoActivity.class);
         //historico.setOnClickListener(v -> irParaHistorico());
 
-        ponto.setOnClickListener(v -> {
-            if (adapter.getPonto().size() == 1 || adapter.getPonto().size() == 3) {
-                AlertConfirmation("Saida");
-            } else {
-                AlertConfirmation("Entrada");
-            }
-        });
+
     }
 
     private void AlertConfirmation(String tipo) {

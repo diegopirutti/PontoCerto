@@ -59,11 +59,11 @@ class ViewHolder extends RecyclerView.ViewHolder {
 
     ViewHolder(@NonNull View itemView) {
         super(itemView);
-        datatxt = (itemView).findViewById(R.id.data_txt);
-        entradatxt = (itemView).findViewById(R.id.entrada_txt);
-        saidatxt = (itemView).findViewById(R.id.saida_txt);
-        entradaseg = (itemView).findViewById(R.id.entradaSeg_txt);
-        saidaseg = (itemView).findViewById(R.id.saidaSeg_txt);
+        datatxt = (itemView).findViewById(R.id.datatxt);
+        entradatxt = (itemView).findViewById(R.id.entrada1txt);
+        saidatxt = (itemView).findViewById(R.id.saida1txt);
+        entradaseg = (itemView).findViewById(R.id.entrada2txt);
+        saidaseg = (itemView).findViewById(R.id.saida2txt);
     }
 
     void bind(PontoDiario pontoDiario) {
