@@ -44,7 +44,7 @@ class PontoConverter {
     @TypeConverter
     fun toJson(json: String): List<Ponto> {
         val type = object : TypeToken<List<Ponto>>() {}.type
-        return Gson().fromJson<List<Ponto>>(json, type)
+        return Gson().fromJson(json, type)
     }
 }
 

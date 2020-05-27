@@ -13,5 +13,4 @@ class UseCaseGestor {
                 .child("/users/")
                 .child(FirebaseAuth.getInstance().currentUser!!.displayName.toString())
     }
-
 }

@@ -2,27 +2,24 @@ package br.com.devdiegopirutti.pontocertoapp.Manager
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import br.com.devdiegopirutti.pontocertoapp.Model.User
 import br.com.devdiegopirutti.pontocertoapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_adicionar.*
 
 class AddUserActivity : AppCompatActivity() {
-    var firebaseAuth: FirebaseAuth? = null
-    companion object {
-        val TAG = "RegisterActivity"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_adicionar)
 
-        btn_entrar_dois.setOnClickListener {
+        initializeView();
+
+    }
+
+    private fun initializeView() {
+        btn_cadastrar.setOnClickListener {
             performRegister()
         }
 
@@ -38,13 +35,11 @@ class AddUserActivity : AppCompatActivity() {
                 }
                 R.id.navigation_add -> return@OnNavigationItemSelectedListener true
                 R.id.exit -> {
-                    firebaseAuth?.signOut()
-                    //FirebaseAuth.getInstance().signOut()
+                    FirebaseAuth.getInstance().signOut()
                 }
             }
             false
         })
-
     }
 
     private fun performRegister() {

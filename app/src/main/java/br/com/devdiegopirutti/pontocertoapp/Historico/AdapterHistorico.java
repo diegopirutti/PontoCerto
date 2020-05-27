@@ -75,7 +75,9 @@ class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     private String timeStampConverter(Ponto ponto) {
-        return (ponto.getEntrada() ? "Entrada " : "Saída ") + format("HH:mm:ss", new Date(new Timestamp(ponto.getData()).getTime())).toString();
+        return (ponto.getEntrada() ? "Entrada " : "Saída ")
+                + format("HH:mm:ss", new Date(new Timestamp(ponto.getData())
+                .getTime())).toString();
     }
 
 

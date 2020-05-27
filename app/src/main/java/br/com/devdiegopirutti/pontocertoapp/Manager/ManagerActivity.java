@@ -20,7 +20,6 @@ public class ManagerActivity extends AppCompatActivity {
     AdapterWorkers adapterWorkers = new AdapterWorkers(arrayList, this);
     ManagerViewModel managerViewModel = new ManagerViewModel();
     RecyclerView recyclerView;
-    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +27,9 @@ public class ManagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gestor);
         initializeViews();
         receiveModelList();
+    }
 
+    private void initializeViews() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_view);
         bottomNavigationView.setSelectedItemId(R.id.navigation_colaboradores);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
@@ -41,14 +42,12 @@ public class ManagerActivity extends AppCompatActivity {
                 case R.id.navigation_colaboradores:
                     return true;
                 case R.id.exit:
-                    firebaseAuth.getInstance().signOut();
+                    FirebaseAuth.getInstance().signOut();
                     break;
             }
             return false;
         });
-    }
 
-    private void initializeViews() {
 //        recyclerView = findViewById(R.id.recycler_hist);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setAdapter(adapterWorkers);
@@ -59,9 +58,6 @@ public class ManagerActivity extends AppCompatActivity {
 //            adapterWorkers.addAllUsers((ArrayList<UsersToGestor>) it);
 //        });
 //        managerViewModel.getUserInformation();
-
     }
-
-
 }
 

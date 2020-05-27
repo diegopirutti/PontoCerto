@@ -138,11 +138,9 @@ public class MainActivity extends AppCompatActivity {
             switch (events) {
                 case GRAVARPONTOENTRADA:
                     generateToastMessage(getString(R.string.pontoEntrada));
-
                     break;
                 case GRAVARPONTOSAÍDA:
                     generateToastMessage(getString(R.string.pontoSaida));
-
                     break;
                 default:
             }

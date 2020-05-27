@@ -10,7 +10,8 @@ import br.com.devdiegopirutti.pontocertoapp.Model.UsersToGestor
 import br.com.devdiegopirutti.pontocertoapp.R
 
 
-class AdapterWorkers(var arrayListBase: ArrayList<UsersToGestor>, var context: Context) : RecyclerView.Adapter<AdapterWorkers.ViewHolderColaboradores>() {
+class AdapterWorkers(var arrayListBase: ArrayList<UsersToGestor>, var context: Context)
+    : RecyclerView.Adapter<AdapterWorkers.ViewHolderColaboradores>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderColaboradores {
@@ -35,6 +36,5 @@ class AdapterWorkers(var arrayListBase: ArrayList<UsersToGestor>, var context: C
         fun bind(usersToGestor: UsersToGestor) {
             nameTxt?.text = usersToGestor.name
         }
-
     }
 }
