@@ -17,21 +17,6 @@
 <!--        tools:layout_editor_absoluteX="205dp"-->
 <!--        tools:layout_editor_absoluteY="682dp" />-->
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_registro"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
-        android:text="registrar"
-        android:textColor="#ffffffff"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
-
     <TextView
         android:id="@+id/textView_boasvindas"
         android:layout_width="wrap_content"
