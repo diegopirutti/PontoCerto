@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/degrade_fundo"
     tools:context=".Login.LoginActivity">
 
     <EditText
@@ -39,14 +39,14 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logar"
-        style="@style/Widget.MaterialComponents.Button"
-        app:cornerRadius="18dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:hint="Senha"
         android:text="entrar"
         android:textColor="#ffffff"
+        app:cornerRadius="18dp"
         app:layout_constraintEnd_toEndOf="@+id/edt_senha"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="@+id/edt_senha"
@@ -56,6 +56,7 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
