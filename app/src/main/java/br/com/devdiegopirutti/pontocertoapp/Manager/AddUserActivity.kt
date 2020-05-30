@@ -60,7 +60,7 @@ class AddUserActivity : AppCompatActivity() {
         val emailUser = email.editText?.text.toString()
         val passwordUser = senha.editText?.text.toString()
         val nomeUser = nome.editText?.text.toString()
-        val userFirebase = UserFirebase(nomeUser, emailUser, passwordUser, "")
+        val userFirebase = UserFirebase(nomeUser, emailUser, passwordUser)
 
         if (emailUser.isEmpty() || passwordUser.isEmpty() || nomeUser.isEmpty()) {
             Toast.makeText(this, "Coloque e-mail e senha", Toast.LENGTH_SHORT).show()
@@ -73,6 +73,7 @@ class AddUserActivity : AppCompatActivity() {
                     Log.d("tag", "deu certo a criação do usuario: ${it.result?.user?.uid}")
 
                     saveUserToFirebaseDatabase(userFirebase)
+                    Toast.makeText(this, "Você criou o usuário com sucesso", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
                     Log.d("TAG", "Falha em criar o usuario: ${it.message}")

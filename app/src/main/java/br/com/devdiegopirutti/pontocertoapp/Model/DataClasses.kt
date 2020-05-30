@@ -30,7 +30,7 @@ data class UsersToGestor(var name: String?)
 
 data class User(var email: String?, var password: String?)
 
-data class UserFirebase(var nome: String?, var email: String?, var password: String?, var uid: String?)
+data class UserFirebase(var nome: String?, var email: String?, var password: String?)
 
 enum class Events {
     SUCESS, FAILURE, SUCESSADMIN, GRAVARPONTOENTRADA, GRAVARPONTOSAÍDA
