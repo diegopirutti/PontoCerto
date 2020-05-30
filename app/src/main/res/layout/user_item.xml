@@ -9,29 +9,35 @@
     >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="2dp"
+            android:contentDescription="image"
+            android:scaleType="center"
             app:srcCompat="@drawable/ic_person_pin_24dp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/viewColaborador"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:contentDescription="nome"
             android:text="TextView"
-            android:textColor="#8B8B8B"
+            android:textColor="#363636"
             android:textSize="18sp" />
     </LinearLayout>
 
-    <view
-        android:layout_marginTop="5dp"
+    <View
+        android:id="@+id/viewDivisor"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorPrimary"/>
