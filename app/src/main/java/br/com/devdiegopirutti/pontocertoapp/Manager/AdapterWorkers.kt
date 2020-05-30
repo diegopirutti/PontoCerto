@@ -31,7 +31,7 @@ class AdapterWorkers(var arrayListBase: ArrayList<UsersToGestor>, var context: C
     }
 
     class ViewHolderColaboradores(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var nameTxt: TextView? = itemView.findViewById(R.id.textView5)
+        var nameTxt: TextView? = itemView.findViewById(R.id.viewColaborador)
 
         fun bind(usersToGestor: UsersToGestor) {
             nameTxt?.text = usersToGestor.name
