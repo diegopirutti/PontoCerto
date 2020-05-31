@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import br.com.devdiegopirutti.pontocertoapp.Historico.AdapterHistorico;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistViewModel;
+import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Login.LoginActivity;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
@@ -23,7 +24,7 @@ public class HistoryManager extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historico_);
+        setContentView(R.layout.activity_historico_gestor);
 
         initializeView();
         receiveModelList();
@@ -39,12 +40,15 @@ public class HistoryManager extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.navigation_historico);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.navigation_colaboradores:
+                case R.id.navigation_add:
                     startActivity(new Intent(getApplicationContext()
                             , AddUserActivity.class));
                     overridePendingTransition(0, 0);
                     return true;
-                case R.id.navigation_add:
+                case R.id.navigation_colaboradores:
+                    startActivity(new Intent(getApplicationContext()
+                            , ManagerActivity.class));
+                    overridePendingTransition(0, 0);
                     return true;
                 case R.id.sign_out:
                     FirebaseAuth.getInstance().signOut();
