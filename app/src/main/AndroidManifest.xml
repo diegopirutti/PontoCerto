@@ -14,6 +14,7 @@
         <activity android:name=".Manager.ManagerActivity"></activity>
         <activity android:name=".Manager.AddUserActivity"></activity>
         <activity android:name=".Main.MainActivity" />
+        <activity android:name=".Maps.MapsActivity" />
         <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +28,6 @@
         <activity
             android:name=".Manager.HistoryManager"
             android:parentActivityName=".Manager.ManagerActivity" />
-
     </application>
 
 </manifest>

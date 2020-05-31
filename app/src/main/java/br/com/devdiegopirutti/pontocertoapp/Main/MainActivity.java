@@ -21,12 +21,12 @@ import java.util.Objects;
 import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Login.LoginActivity;
+import br.com.devdiegopirutti.pontocertoapp.Maps.MapsActivity;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView userName, userEmpresa;
     private MainActivityViewModel viewModel;
     DayDataAdapter adapter = new DayDataAdapter();
 
@@ -45,14 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeViewModel() {
         viewModel = new MainActivityViewModel(Objects.requireNonNull(((MyApplication) getApplication()).getDatabase()));
-
-        viewModel.info
-                .observe(this,
-                        infoConta -> {
-                            userEmpresa.setText(infoConta.getEmpresa());
-                            userName.setText(infoConta.getName());
-                        }
-                );
 
         viewModel.pontoDiarioMutableLiveData.observe(this, pontoDiario -> {
             adapter.clear();
@@ -74,16 +66,18 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
 
-        userEmpresa = findViewById(R.id.empresa);
-        userName = findViewById(R.id.txt_nome);
         RecyclerView recyclerView = findViewById(R.id.recyclerViewMain);
         TextView alertText = findViewById(R.id.AlertText);
+        TextView txtLocatization = findViewById(R.id.txt_localization);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerView.setAdapter(adapter);
 
+        txtLocatization.setOnClickListener(v -> {
+            startActivity(new Intent(this, MapsActivity.class));
+        });
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_view);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
