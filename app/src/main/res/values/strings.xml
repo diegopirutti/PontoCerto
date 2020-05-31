@@ -10,4 +10,5 @@
     <string name="saida">Saída:</string>
     <string name="entrada">Entrada:</string>
     <string name="txt_localizaçao">Sua localização está sendo gravada \n você pode verificar clicando aqui </string>
+    <string name="title_activity_maps">Map</string>
 </resources>

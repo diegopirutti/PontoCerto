@@ -22,6 +22,7 @@ import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
 import br.com.devdiegopirutti.pontocertoapp.Login.LoginActivity;
 import br.com.devdiegopirutti.pontocertoapp.Maps.MapsActivity;
+import br.com.devdiegopirutti.pontocertoapp.Maps.Permissoes;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         txtLocatization.setOnClickListener(v -> {
-            startActivity(new Intent(this, MapsActivity.class));
+             startActivity(new Intent(this, MapsActivity.class));
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_view);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);

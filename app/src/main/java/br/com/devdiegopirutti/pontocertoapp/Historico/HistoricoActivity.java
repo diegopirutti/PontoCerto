@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import br.com.devdiegopirutti.pontocertoapp.Login.LoginActivity;
 import br.com.devdiegopirutti.pontocertoapp.Main.MainActivity;
+import br.com.devdiegopirutti.pontocertoapp.Manager.AddUserActivity;
+import br.com.devdiegopirutti.pontocertoapp.Manager.ManagerActivity;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
