@@ -1,6 +1,7 @@
 package br.com.devdiegopirutti.pontocertoapp.Historico;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -18,8 +19,8 @@ public class HistViewModel extends ViewModel {
     public MutableLiveData<List<PontoDiario>> pontoLiveData = new MutableLiveData();
     public HistUseCase usecase = new HistUseCase();
 
-    public void getData() {
-        usecase.getDateInformationFromFirebase()
+    public void getData(@Nullable String userId) {
+        usecase.getDateInformationFromFirebase(userId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

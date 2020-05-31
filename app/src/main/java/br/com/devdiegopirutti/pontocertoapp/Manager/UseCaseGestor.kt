@@ -10,6 +10,5 @@ class UseCaseGestor {
     fun getInformation(): DatabaseReference? {
         return firebaseDatabase.reference
                 .child("/users/")
-
     }
 }

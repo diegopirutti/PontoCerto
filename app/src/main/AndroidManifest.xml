@@ -24,6 +24,9 @@
         <activity
             android:name=".Historico.HistoricoActivity"
             android:parentActivityName=".Main.MainActivity" />
+        <activity
+            android:name=".Manager.HistoryManager"
+            android:parentActivityName=".Manager.ManagerActivity" />
 
     </application>
 

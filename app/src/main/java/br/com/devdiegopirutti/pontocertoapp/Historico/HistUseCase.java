@@ -8,9 +8,9 @@ public class HistUseCase {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-    public DatabaseReference getDateInformationFromFirebase() {
+    public DatabaseReference getDateInformationFromFirebase(String userId) {
         return firebaseDatabase.getReference()
                 .child("/users/")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pontoDiario/");
+                .child(userId != null ? userId + "/pontoDiario/" : FirebaseAuth.getInstance().getCurrentUser().getUid() + "/pontoDiario/");
     }
 }

@@ -13,13 +13,19 @@ class ManagerViewModel : ViewModel() {
     var usersList = MutableLiveData<List<UsersToGestor>>()
 
     fun getUserInformation() {
-        useCase?.getInformation()
+        useCase.getInformation()
                 ?.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         val usuarios: ArrayList<UsersToGestor> = ArrayList()
-                        for (listData in dataSnapshot.children) {
-                            listData.getValue(UsersToGestor::class.java)?.let { usuarios.add(it) }
+
+                        dataSnapshot.children.forEach {
+                            it.getValue(UsersToGestor::class.java)
+                                    ?.let { user ->
+                                        user.userId = it.key
+                                        usuarios.add(user)
+                                    }
                         }
+
                         usersList.postValue(usuarios)
                     }
 
