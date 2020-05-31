@@ -14,12 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.stetho.Stetho;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
 import br.com.devdiegopirutti.pontocertoapp.DAO.MyApplication;
 import br.com.devdiegopirutti.pontocertoapp.Historico.HistoricoActivity;
+import br.com.devdiegopirutti.pontocertoapp.Login.LoginActivity;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
 
@@ -103,8 +103,9 @@ public class MainActivity extends AppCompatActivity {
                     });
                     return true;
                 case R.id.exit:
-                    FirebaseAuth.getInstance().signOut();
-                    break;
+                    startActivity(new Intent(this, LoginActivity.class));
+                    finishAffinity();
+                    return true;
             }
             return false;
         });

@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
+import br.com.devdiegopirutti.pontocertoapp.Login.LoginActivity;
 import br.com.devdiegopirutti.pontocertoapp.Model.UsersToGestor;
 import br.com.devdiegopirutti.pontocertoapp.R;
 
@@ -45,7 +46,9 @@ public class ManagerActivity extends AppCompatActivity {
                     return true;
                 case R.id.exit:
                     FirebaseAuth.getInstance().signOut();
-                    break;
+                    startActivity(new Intent(this, LoginActivity.class));
+                    finishAffinity();
+                    return true;
             }
             return false;
         });
