@@ -26,7 +26,7 @@ data class InfoConta(var name: String? = null, var empresa: String? = null)
 
 data class HoraEData(var timestamp: Long, var entrada: Boolean)
 
-data class UsersToGestor(var name: String?)
+data class UsersToGestor(var nome: String? = null)
 
 data class User(var email: String?, var password: String?)
 

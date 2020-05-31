@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +28,7 @@ public class ManagerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gestor);
         initializeViews();
         receiveModelList();
+        managerViewModel.getUserInformation();
     }
 
     private void initializeViews() {
@@ -48,16 +50,17 @@ public class ManagerActivity extends AppCompatActivity {
             return false;
         });
 
-//        recyclerView = findViewById(R.id.recycler_hist);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setAdapter(adapterWorkers);
+        recyclerView = findViewById(R.id.recyclerViewListUser);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapterWorkers);
+
     }
 
     public void receiveModelList() {
-//        managerViewModel.getUsersList().observe(this, it -> {
-//            adapterWorkers.addAllUsers((ArrayList<UsersToGestor>) it);
-//        });
-//        managerViewModel.getUserInformation();
+        managerViewModel.getUsersList().observe(this, it ->
+                adapterWorkers.addAllUsers((ArrayList<UsersToGestor>) it));
+
     }
 }
 

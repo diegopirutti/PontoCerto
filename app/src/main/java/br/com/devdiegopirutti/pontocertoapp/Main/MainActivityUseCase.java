@@ -7,7 +7,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
-import br.com.devdiegopirutti.pontocertoapp.Model.HoraEData;
 import br.com.devdiegopirutti.pontocertoapp.Model.PontoDiario;
 
 import static android.text.format.DateFormat.format;
@@ -16,13 +15,6 @@ import static android.text.format.DateFormat.format;
 public class MainActivityUseCase {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-
-    public Task<Void> gravarHorario(boolean b) {
-        return firebaseDatabase.getReference()
-                .child("/users/")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/ponto/").push()
-                .setValue(new HoraEData(new Date().getTime(), b));
-    }
 
     public DatabaseReference getInformation() {
         return firebaseDatabase.getReference()

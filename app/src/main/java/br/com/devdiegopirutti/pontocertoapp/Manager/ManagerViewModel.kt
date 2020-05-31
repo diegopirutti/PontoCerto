@@ -9,14 +9,14 @@ import com.google.firebase.database.ValueEventListener
 
 class ManagerViewModel : ViewModel() {
 
-    var useCase: UseCaseGestor? = null
-    var usersList: MutableLiveData<Any?> = MutableLiveData<Any?>()
+    var useCase = UseCaseGestor()
+    var usersList = MutableLiveData<List<UsersToGestor>>()
 
     fun getUserInformation() {
         useCase?.getInformation()
                 ?.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        val usuarios: ArrayList<UsersToGestor> = ArrayList<UsersToGestor>()
+                        val usuarios: ArrayList<UsersToGestor> = ArrayList()
                         for (listData in dataSnapshot.children) {
                             listData.getValue(UsersToGestor::class.java)?.let { usuarios.add(it) }
                         }

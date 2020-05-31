@@ -15,15 +15,15 @@ import kotlinx.android.synthetic.main.fragment_adicionar.*
 
 class AddUserActivity : AppCompatActivity() {
 
-    lateinit var nome: TextInputLayout
-    lateinit var email: TextInputLayout
-    lateinit var senha: TextInputLayout
+    private lateinit var nome: TextInputLayout
+    private lateinit var email: TextInputLayout
+    private lateinit var senha: TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_adicionar)
 
-        initializeView();
+        initializeView()
 
     }
 
@@ -84,7 +84,6 @@ class AddUserActivity : AppCompatActivity() {
     private fun saveUserToFirebaseDatabase(user: UserFirebase) {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
-
 
         ref.setValue(user)
                 .addOnSuccessListener {

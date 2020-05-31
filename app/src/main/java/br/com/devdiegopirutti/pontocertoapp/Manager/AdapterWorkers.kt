@@ -27,6 +27,7 @@ class AdapterWorkers(var arrayListBase: ArrayList<UsersToGestor>, var context: C
 
     fun addAllUsers(arrayList: ArrayList<UsersToGestor>) {
         arrayListBase.addAll(arrayList)
+        notifyDataSetChanged()
 
     }
 
@@ -34,7 +35,11 @@ class AdapterWorkers(var arrayListBase: ArrayList<UsersToGestor>, var context: C
         var nameTxt: TextView? = itemView.findViewById(R.id.viewColaborador)
 
         fun bind(usersToGestor: UsersToGestor) {
-            nameTxt?.text = usersToGestor.name
+            nameTxt?.text = usersToGestor.nome
+
+            nameTxt?.setOnClickListener {
+
+            }
         }
     }
 }
