@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import br.com.devdiegopirutti.pontocertoapp.Login.LoginActivity;
 import br.com.devdiegopirutti.pontocertoapp.Main.MainActivity;
@@ -47,6 +48,7 @@ public class HistoricoActivity extends AppCompatActivity {
                 case R.id.navigation_historico:
                     return true;
                 case R.id.sign_out:
+                    FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(this, LoginActivity.class));
                     finishAffinity();
                     return true;
